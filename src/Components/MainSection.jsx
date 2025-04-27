@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import StatsSection from "./StateSection";
 import Screen from "./Screen";
 import img from "../images/plane.png";
+import AppStoreGooglePlayButtons from "./Installation";
 
 export default function FirstSection() {
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
@@ -73,6 +74,7 @@ export default function FirstSection() {
           transition: "background 0.3s ease",
         }}
       />
+      
 
       {/* Centered Text */}
       <Box
@@ -131,7 +133,10 @@ export default function FirstSection() {
           zIndex: 1,
         }}
       >
-        <StatsSection />
+        
+        {/* <AppStoreGooglePlayButtons/> */}
+        <StatsSection/>
+       
       </Box>
     </Box>
   );

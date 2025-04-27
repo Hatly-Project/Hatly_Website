@@ -47,8 +47,8 @@ function ResponsiveAppBar() {
         height: "100px",
         justifyContent: "center",
         backgroundColor: "transparent",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
 
-        boxShadow: "none",
         zIndex: 10,
       }}
     >
