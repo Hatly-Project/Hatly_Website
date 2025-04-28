@@ -117,7 +117,7 @@ export default function FrequentlyAsked() {
             backgroundColor: 'rgba(65, 65, 218, 0.15)'
           }
         }}>
-          Shopping Questions
+          Shoppers
         </Typography>
 
         <BeautifulAccordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
@@ -203,7 +203,7 @@ export default function FrequentlyAsked() {
             backgroundColor: 'rgba(65, 65, 218, 0.15)'
           }
         }}>
-          Travel Questions
+          Travellers
         </Typography>
 
         <BeautifulAccordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
