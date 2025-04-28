@@ -12,11 +12,12 @@ const FeatureCard = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  padding: theme.spacing(4),
+  padding: theme.spacing(3),
   borderRadius: '16px',
   background: 'white',
   boxShadow: '0 8px 32px rgba(31, 38, 135, 0.1)',
-  height: '100%',
+  height: 'auto',
+  minHeight: '400px',
   position: 'relative',
   overflow: 'hidden',
   transition: 'all 0.3s ease',
@@ -37,12 +38,10 @@ const FeatureCard = styled(Box)(({ theme }) => ({
 
 const FeatureImage = styled('img')(({ theme }) => ({
   width: '100%',
-  maxWidth: '350px',
-  height: 'auto',
-  objectFit: 'contain',
-  marginBottom: theme.spacing(4),
+  height: '180px',
+  objectFit: 'cover',
+  marginBottom: theme.spacing(2),
   [theme.breakpoints.up('md')]: {
-    height: '250px',
     '&:hover': {
       transform: 'scale(1.03)'
     }
@@ -50,7 +49,7 @@ const FeatureImage = styled('img')(({ theme }) => ({
 }));
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: '#4141DA',
   fontWeight: 600,
   marginBottom: theme.spacing(2),
   textAlign: 'center',
@@ -63,7 +62,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
     transform: 'translateX(-50%)',
     width: '80px',
     height: '3px',
-    background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+    background: '#4141DA',
     borderRadius: '3px'
   }
 }));
@@ -73,8 +72,8 @@ const InfoBadge = styled(Box)(({ theme, gradientcolors }) => ({
     ? `linear-gradient(135deg, ${gradientcolors.start || '#f6f7ff'}, ${gradientcolors.end || '#e0e1ff'})`
     : 'linear-gradient(135deg, #f6f7ff, #e0e1ff)',
   borderRadius: '12px',
-  padding: theme.spacing(3),
-  marginTop: theme.spacing(3),
+  padding: theme.spacing(2),
+  marginTop: theme.spacing(2),
   width: '100%',
   transition: 'all 0.3s ease',
   '&:hover': {
@@ -96,7 +95,7 @@ function PlatformFeatures() {
         title: "Cost Savings",
         items: [
           "Traditional shipping: $50-$100",
-          "Hatly shipping: $20-$40",
+          <span style={{ color: '#4141DA' }}>Hatly shipping: $20-$40</span>,
           "Save up to 60% on costs"
         ],
         gradient: { start: '#f3f4ff', end: '#d9dbff' }
@@ -111,7 +110,7 @@ function PlatformFeatures() {
         title: "Earning Potential",
         items: [
           "Average earnings per trip:",
-          "$50 - $200",
+          <span style={{ color: '#4141DA' }}>$50 - $200</span>,
           "Flexible package sizes"
         ],
         gradient: { start: '#fff4f4', end: '#ffdfdf' }
@@ -126,7 +125,7 @@ function PlatformFeatures() {
         title: "Environmental Impact",
         items: [
           "Reduces carbon emissions by:",
-          "70-80%",
+          <span style={{ color: '#4141DA' }}>70-80%</span>,
           "Compared to air freight"
         ],
         gradient: { start: '#f0fff4', end: '#d0ffdf' }
@@ -139,9 +138,9 @@ function PlatformFeatures() {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      minHeight: '100vh',
+      minHeight: 'auto',
       background: 'linear-gradient(to bottom, #f9f9ff 0%, #ffffff 100%)',
-      py: { xs: 5, md: 8 }
+      py: { xs: 4, md: 6 }
     }}>
       <Container maxWidth="lg" sx={{ 
         display: 'flex',
@@ -149,38 +148,44 @@ function PlatformFeatures() {
         justifyContent: 'center'
       }}>
         <Fade>
-          <Box textAlign="center" mb={6}>
+          <Box textAlign="center" mb={4}>
             <SectionTitle variant="h4" component="h2">
               Why We're Different
             </SectionTitle>
-            <Typography variant="subtitle1" color="textSecondary" maxWidth="700px" margin="0 auto" mt={3}>
+            <Typography variant="subtitle1" color="textSecondary" maxWidth="700px" margin="0 auto" mt={2}>
               Discover what makes Hatly unique
             </Typography>
           </Box>
         </Fade>
 
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={3} justifyContent="center" sx={{ 
+          flexWrap: { xs: 'wrap', md: 'nowrap' },
+          alignItems: 'stretch'
+        }}>
           {features.map((feature, index) => (
-            <Grid item xs={12} md={4} key={index}>
-              <Slide 
-                direction="right" cascade
-              >
-                <FeatureCard>
+            <Grid item xs={12} md={4} key={index} sx={{ 
+              minWidth: 0,
+              display: 'flex'
+            }}>
+              <Slide direction="right" cascade>
+                <FeatureCard sx={{ width: '100%' }}>
                   <Zoom>
-                    <FeatureImage src={feature.image} alt={feature.title} />
+                    <Box sx={{ width: '100%' }}>
+                      <FeatureImage src={feature.image} alt={feature.title} />
+                    </Box>
                   </Zoom>
-                  <Box textAlign="center" width="100%">
+                  <Box textAlign="center" width="100%" sx={{ px: 1 }}>
                     <Fade direction="up">
                       <Typography variant="h5" component="h3" gutterBottom sx={{ 
                         fontWeight: 600,
-                        color: theme.palette.primary.main,
-                        mb: 3
+                        color: '#4141DA',
+                        mb: 2
                       }}>
                         {feature.title}
                       </Typography>
                       <Typography variant="body1" color="textSecondary" sx={{ 
-                        lineHeight: 1.7,
-                        mb: 3
+                        lineHeight: 1.6,
+                        mb: 2
                       }}>
                         {feature.description}
                       </Typography>
@@ -191,19 +196,19 @@ function PlatformFeatures() {
                         <Typography variant="subtitle1" component="h4" gutterBottom sx={{ 
                           fontWeight: 600,
                           color: theme.palette.text.primary,
-                          mb: 2
+                          mb: 1
                         }}>
                           {feature.info.title}
                         </Typography>
                         <Box sx={{ 
                           '& > div': {
-                            mb: 1.5,
+                            mb: 1,
                             fontSize: '0.95rem',
                             color: theme.palette.text.secondary
                           },
                           '& > div:nth-of-type(2)': {
                             fontWeight: 600,
-                            color: theme.palette.primary.dark,
+                            color: '#4141DA',
                             fontSize: '1.1rem'
                           }
                         }}>
