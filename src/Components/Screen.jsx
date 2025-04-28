@@ -6,7 +6,7 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PaymentIcon from '@mui/icons-material/Payment';
 import StarRateIcon from '@mui/icons-material/StarRate';
-import middltImg from "../images/middleImg.jpg";
+import middltImg from "../images/Screen1-removebg-preview.png";
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.main,
@@ -176,8 +176,8 @@ const OurServices = () => (
             sx={{
               width: '100%',
               height: 'auto',
-              borderRadius: '20px',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+              // borderRadius: '20px',
+              // boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
               maxHeight: '500px',
               objectFit: 'contain'
             }}
