@@ -46,9 +46,10 @@ const cardVariants = {
 
 const OurServices = () => (
   <Box sx={{ background: "#f5f5f5", py: 8, textAlign: "center" }}>
-    <h1  style={{ color: '#4141DA' ,marginBlock:'40px'}}>
-      Platform Features
-    </h1>
+    <Box marginBottom={'30px'}>
+           <h1 style={{ color: '#4141DA' ,marginBottom:'15px'}}>Inside The Platform</h1>
+           <Box width="20%" height="1px" bgcolor="grey.300" margin={'auto'} />
+         </Box>
 
     <Box
       sx={{

@@ -15,7 +15,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import MenuIcon from '@mui/icons-material/Menu';
 import img from "../images/mainLogo.png"; 
 
-import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
+import { useLocation, useNavigate } from 'react-router-dom'; // Import the useNavigate hook
 
 export default function TemporaryDrawer() {
     const pages = [
@@ -24,6 +24,10 @@ export default function TemporaryDrawer() {
       { name: "About Us", path: "/about-us" },
       { name: "Contact Us", path: "/contact-us" }
     ];
+      const location = useLocation();
+      const path = location.pathname;
+
+   const isSpecialPage = path === "/about-us"  || path === "/contact-us" || path ===  "/frequently-asked" ;
 
     const [open, setOpen] = React.useState(false);
     const navigate = useNavigate(); // Declare the useNavigate hook
@@ -114,7 +118,7 @@ export default function TemporaryDrawer() {
             
           }}
         >
-          <MenuIcon sx={{ color: 'white', fontSize: "35px" }} />
+          <MenuIcon sx={{ color: isSpecialPage?  "#4141DA":'white', fontSize: "35px" }} />
         </IconButton>
 
         {/* Drawer component */}

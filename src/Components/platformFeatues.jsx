@@ -1,27 +1,22 @@
 import React from 'react';
 import { Button, Grid, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-// import Breadcrumbs from "@mui/material/Breadcrumbs";
-// import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
-// import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-// import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-// import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-// import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
-// import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-// import ResponsiveAppBar from "./components/SearchAppBar/SearchAppBar";
-// import mainImg from "./assets/images/green-sofa-and-pink-chair-sit-in-a-living-room_COMPRESSED.jpg";
-// import ShopByCategory from "./components/ShopByCategory/ShopByCategory";
 
-import connect from "../images/connect.png";
-// import connect1 from "../images/connect.png";
-// import connect2 from "../images/connect.png";
-// import { Fade } from "react-awesome-reveal";
+
+import shipping from "../images/affordableshipping.png";
+import money from "../images/earn money.png";
+import eco from "../images/eco.png";
+
 import { Slide } from "react-awesome-reveal";
 
 function PlatformFeatues() {
     return (
-        <box sx={{ background: "#f5f5f5"}}>
-            {/* ---------Section1----- */}
+        <box sx={{ background: "#f5f5f5",marginBlock:'20px'}}>
+         <Box paddingBottom={'40px'}>
+           <h1 style={{ color: '#4141DA' ,textAlign:'center',paddingBlock:'15px', background: "#f5f5f5"}}>Why We’re Different</h1>
+          <Box width="20%" height="1px" bgcolor="grey.300" margin={'auto'} />
+         </Box>
+          
             {/* ---------Section1----- */}
       <Box sx={{ paddingBlock: "10px", textAlign: "center" , background: "#f5f5f5"}}>
         <Grid container spacing={1}>
@@ -30,7 +25,7 @@ function PlatformFeatues() {
             <Slide direction="left" cascade>
               <Box
                 component="img"
-                src={connect}
+                src={shipping}
                 sx={{
                   width: "80%",
                   height: "350px",
@@ -54,20 +49,21 @@ function PlatformFeatues() {
               >
                 <Typography
                   variant="h5"
-                  sx={{ paddingTop: { xs: "0", md: "60px" } }}
+                  sx={{ paddingTop: { xs: "0", md: "60px" ,textTransform:'uppercase'}, marginBottom:'40px'}}
                 >
-                  AS LOW AS 0% APR FINANCING UPON APPROVAL WITH AFFIRM
+                Affordable Shipping Option
                 </Typography>
-                <Typography variant="subtitle1" sx={{}}>
-                  Affirm provides flexible payment solutions, allowing you to
-                  buy better and pay over time.
+                
+                <Typography variant="body1" >
+                 By using travelers as couriers, Hatly provides a cheaper alternative to traditional 
+international shipping companies. 
                 </Typography>
-                <Button
+                {/* <Button
                   variant="contained"
                   sx={{ backgroundColor: "black", width: "fit-content" }}
                 >
                   Learn More
-                </Button>
+                </Button> */}
               </Box>
             </Slide>
           </Grid>
@@ -93,20 +89,15 @@ function PlatformFeatues() {
               >
                 <Typography
                   variant="h5"
-                  sx={{ paddingTop: { xs: "0", md: "60px" } }}
+                  sx={{ paddingTop: { xs: "0", md: "60px" }, marginBottom:'40px' }}
                 >
-                  AS LOW AS 0% APR FINANCING UPON APPROVAL WITH AFFIRM
+                Earn While You Travel
                 </Typography>
-                <Typography variant="subtitle1" sx={{}}>
-                  Affirm provides flexible payment solutions, allowing you to
-                  buy better and pay over time.
+                <Typography variant="body1" sx={{}}>
+                   Travelers can earn money effortlessly without much extra effort, making it an attractive 
+option for people who are already planning trips.
                 </Typography>
-                <Button
-                  variant="contained"
-                  sx={{ backgroundColor: "black", width: "fit-content" }}
-                >
-                  Learn More
-                </Button>
+                
               </Box>
             </Slide>
           </Grid>
@@ -114,7 +105,7 @@ function PlatformFeatues() {
             <Slide direction="right" cascade>
               <Box
                 component="img"
-                src={connect}
+                src={money}
                 sx={{
                   width: "80%",
                   height: "350px",
@@ -134,7 +125,7 @@ function PlatformFeatues() {
             <Slide direction="left" cascade>
               <Box
                 component="img"
-                src={connect}
+                src={eco}
                 sx={{
                   width: "80%",
                   height: "350px",
@@ -158,20 +149,15 @@ function PlatformFeatues() {
               >
                 <Typography
                   variant="h5"
-                  sx={{ paddingTop: { xs: "0", md: "60px" } }}
+                  sx={{ paddingTop: { xs: "0", md: "60px" }, marginBottom:'40px' }}
                 >
-                  AS LOW AS 0% APR FINANCING UPON APPROVAL WITH AFFIRM
+                  Eco-Friendly
                 </Typography>
                 <Typography variant="subtitle1" sx={{}}>
-                  Affirm provides flexible payment solutions, allowing you to
-                  buy better and pay over time.
+                 Since travelers are already going to their destinations, the environmental impact is reduced compared 
+to traditional shipping methods, which often involve additional emissions from shipping vehicles. 
                 </Typography>
-                <Button
-                  variant="contained"
-                  sx={{ backgroundColor: "black", width: "fit-content" }}
-                >
-                  Learn More
-                </Button>
+                
               </Box>
             </Slide>
           </Grid>

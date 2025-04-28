@@ -16,18 +16,24 @@ export default function FrequentlyAsked() {
   };
 
   return (
-    <div style={{marginTop:"100px"}}>
+    <div style={{marginTop:"40px"}}>
+      <h1 style={{paddingBlock:'20px',textAlign:'center'}}>F&Qs</h1>
+      <h3 style={{paddingBlock:'20px',marginInline:'40px',color:'#4141DA'}}>Shoppers Questions</h3>
       <Accordion
         expanded={expanded}
         onChange={handleExpansion}
         slots={{ transition: Fade }}
         
+        
         slotProps={{ transition: { timeout: 400 } }}
         sx={
+        
+          
           
           [
           expanded
             ? {
+              
                 [`& .${accordionClasses.region}`]: {
                   height: 'auto',
                 },
@@ -37,7 +43,7 @@ export default function FrequentlyAsked() {
               }
             : {
                 [`& .${accordionClasses.region}`]: {
-                  height: 0,
+                  height: 10,
                 },
                 [`& .${accordionDetailsClasses.root}`]: {
                   display: 'none',
@@ -45,6 +51,68 @@ export default function FrequentlyAsked() {
               },
         ]}
       >
+        
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          <Typography component="span">Custom transition using Fade</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2-content"
+          id="panel2-header"
+        >
+          <Typography component="span">Default transition using Collapse</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion
+        expanded={expanded}
+        onChange={handleExpansion}
+        slots={{ transition: Fade }}
+        
+        
+        slotProps={{ transition: { timeout: 400 } }}
+        sx={
+          
+          
+          [
+          expanded
+            ? {
+              
+                [`& .${accordionClasses.region}`]: {
+                  height: 'auto',
+                },
+                [`& .${accordionDetailsClasses.root}`]: {
+                  display: 'block',
+                },
+              }
+            : {
+                [`& .${accordionClasses.region}`]: {
+                  height: 10,
+                },
+                [`& .${accordionDetailsClasses.root}`]: {
+                  display: 'none',
+                },
+              },
+        ]}
+      >
+        
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
