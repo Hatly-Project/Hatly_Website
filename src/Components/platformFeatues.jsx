@@ -62,7 +62,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
     transform: 'translateX(-50%)',
     width: '80px',
     height: '3px',
-    background: '#4141DA',
+    background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
     borderRadius: '3px'
   }
 }));

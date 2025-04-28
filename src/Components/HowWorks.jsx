@@ -12,7 +12,7 @@ import create from "../images/Create Account (5).png";
 import { Slide, Fade } from "react-awesome-reveal";
 
 const SectionTitle = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: '#4141DA',
   fontWeight: 600,
   marginBottom: theme.spacing(2),
   position: 'relative',
