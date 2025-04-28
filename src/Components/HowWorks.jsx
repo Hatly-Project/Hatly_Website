@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
-import { motion } from 'framer-motion'; // Import framer motion
+import { motion } from 'framer-motion';
 import deliver from "../images/delivering.png";
 import connect from "../images/connecting.png";
 import create from "../images/Create Account (5).png";
@@ -13,30 +13,32 @@ import { Slide } from "react-awesome-reveal";
 export default function MediaCard() {
   return (
     <div style={{ textAlign: "center", paddingBlock: "70px", background: "#f5f5f5" }}>
-     <Box marginBottom={'30px'}>
-       <h1 style={{ color: '#4141DA' ,marginBottom:'15px'}}>How Hatly Works</h1>
-       <Box width="20%" height="1px" bgcolor="grey.300" margin={'auto'} />
-     </Box>
+      <Box marginBottom={'30px'}>
+        <h1 style={{ color: '#4141DA', marginBottom: '15px' }}>How Hatly Works</h1>
+        <Box width="20%" height="1px" bgcolor="grey.300" margin={'auto'} />
+      </Box>
       <Box
         sx={{
           display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' }, // Stack vertically on mobile
-          gap: { xs: 4, md: 6 },                      // Smaller gap on mobile
+          flexDirection: { xs: 'column', md: 'row' },
+          gap: { xs: 4, md: 6 },
           justifyContent: 'center',
           alignItems: 'center',
         }}
         p={4}
       >
-
-
         {/* Order Card */}
         <Slide direction="left" cascade>
           <Card
             sx={{
               maxWidth: 345,
-              width: { xs: '100%', sm: 300, md: 345 }, // Full width on mobile
+              width: { xs: '100%', sm: 300, md: 345 },
               boxShadow: 3,
-              transition: 'all 0.3s ease',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-10px)',
+                boxShadow: '0 10px 20px rgba(0,0,0,0.2)'
+              }
             }}
           >
             <CardMedia
@@ -68,8 +70,12 @@ export default function MediaCard() {
             maxWidth: 345,
             width: { xs: '100%', sm: 300, md: 345 },
             boxShadow: 3,
-            transition: 'all 0.3s ease',
-            marginBottom: { xs: '40px', md: '120px' }, // smaller margin on mobile
+            transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+            marginBottom: { xs: '40px', md: '120px' },
+            '&:hover': {
+              transform: 'translateY(-10px)',
+              boxShadow: '0 10px 20px rgba(0,0,0,0.2)'
+            }
           }}
         >
           <CardMedia
@@ -101,7 +107,11 @@ export default function MediaCard() {
               maxWidth: 345,
               width: { xs: '100%', sm: 300, md: 345 },
               boxShadow: 3,
-              transition: 'all 0.3s ease',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              '&:hover': {
+                transform: 'translateY(-10px)',
+                boxShadow: '0 10px 20px rgba(0,0,0,0.2)'
+              }
             }}
           >
             <CardMedia
@@ -126,7 +136,6 @@ export default function MediaCard() {
             </CardContent>
           </Card>
         </Slide>
-
       </Box>
     </div>
   );
