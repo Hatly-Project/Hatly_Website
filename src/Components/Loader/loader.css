@@ -13,8 +13,8 @@
 }
 
 .loader-img {
-  width: 290px;
-  height: 290px;
+  width: 400px;
+  height: 400px;
   animation: fadeInOut 2s ease-in-out infinite; /* <-- added fade animation */
 }
 

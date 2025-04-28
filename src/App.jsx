@@ -10,6 +10,7 @@ import Footer from './Components/Footer'
 import { useEffect, useState } from 'react'
 import Loader from './Components/Loader/Loader'
 import TemporaryDrawer from './Components/Drawer'
+import FrequentlyAsked from './Components/F&Qs'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/about-us" element={<About />} />
          <Route path="/" element={<Home />} />
+          <Route path="/frequently-asked" element={<FrequentlyAsked />} />
       </Routes>
       
 

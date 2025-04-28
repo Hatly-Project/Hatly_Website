@@ -13,14 +13,14 @@ import HelpIcon from '@mui/icons-material/Help';
 import InfoIcon from '@mui/icons-material/Info';
 import PhoneIcon from '@mui/icons-material/Phone';
 import MenuIcon from '@mui/icons-material/Menu';
-import img from "../images/logo RGB-09 (1).png"; 
-import img2 from "../images/Capture.png"; 
+import img from "../images/mainLogo.png"; 
+
 import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
 
 export default function TemporaryDrawer() {
     const pages = [
       { name: "Home", path: "/" },
-      { name: "F&Qs", path: "/faqs" },
+      { name: "F&Qs", path: "/frequently-asked" },
       { name: "About Us", path: "/about-us" },
       { name: "Contact Us", path: "/contact-us" }
     ];
@@ -38,44 +38,62 @@ export default function TemporaryDrawer() {
     };
 
     const DrawerList = (
-      <Box sx={{ width: 210, color: "#4141DA", fontWeight: "bold", fontSize: "25px" }} role="presentation" onClick={toggleDrawer(false)}>
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '20px' }}>
-          {/* Logo positioned at the top-right corner */}
-          <img src={img} width={"220"} height={"180"} alt="Logo" style={{ position: 'absolute', top: '20px', right: '20px' }} />
-        </Box>
-
+      <Box sx={{ width: 250, color: "#4141DA", fontWeight: "bold", fontSize: "25px", }} role="presentation" onClick={toggleDrawer(false)}>
+       
         {/* List of Menu Items */}
         <List>
              <img
-          src={img2}
-          width="200"
-          height="200"
+          src={img}
+          width="100%"
+          height="110"
+          padding="0"
           alt="Logo"
           style={{
             position: 'relative',
             
           }}
         />
+        <Box width="100%" height="1px" bgcolor="grey.300"  />
+
           {pages.map((page, index) => (
             <ListItem key={page.name} disablePadding>
               <ListItemButton
-                onClick={() => handleNavigation(page.path)} // Navigate based on path
-                sx={{
-                  '&:hover': {
-                    backgroundColor: '#f1f1f1', // Change background color on hover
-                    transform: 'scale(1.05)', // Slightly scale the item on hover
-                    transition: 'transform 0.2s ease-in-out', // Smooth transition for the scaling effect
-                  },
-                }}
-              >
-                <ListItemIcon>
-                  {index === 0 ? <HomeIcon sx={{ color: "grey", fontSize: "23px" }} /> :
-                   index === 1 ? <HelpIcon sx={{ color: "grey", fontSize: "23px" }} /> :
-                   index === 2 ? <InfoIcon sx={{ color: "grey", fontSize: "23px" }} /> :
-                   <PhoneIcon sx={{ color: "grey", fontSize: "23px" }} />}
-                </ListItemIcon>
-                <ListItemText primary={page.name} />
-              </ListItemButton>
+  onClick={() => handleNavigation(page.path)}
+  sx={{
+    paddingBlock: "12px",
+    backgroundColor: "transparent",
+    transition: 'all 0.5s ease',
+    '&:hover': {
+      backgroundColor: "#4141DA",
+      '& .MuiListItemIcon-root': {
+        color: 'white',
+      },
+      '& .MuiTypography-root': { // targets ListItemText
+        color: 'white',
+      },
+    },
+  }}
+>
+  <ListItemIcon sx={{ color: "black" }}>
+    {index === 0 ? (
+      <HomeIcon sx={{ fontSize: "23px" }} />
+    ) : index === 1 ? (
+      <HelpIcon sx={{ fontSize: "23px" }} />
+    ) : index === 2 ? (
+      <InfoIcon sx={{ fontSize: "23px" }} />
+    ) : (
+      <PhoneIcon sx={{ fontSize: "23px" }} />
+    )}
+  </ListItemIcon>
+
+  <ListItemText 
+    primary={page.name}
+    primaryTypographyProps={{
+      sx: { color: "black", fontSize: "18px" },
+    }}
+  />
+</ListItemButton>
+
             </ListItem>
           ))}
         </List>
@@ -93,9 +111,10 @@ export default function TemporaryDrawer() {
             left: 20, 
             padding: '10px',
             zIndex: 1000, 
+            
           }}
         >
-          <MenuIcon sx={{ color: '#fff', fontSize: "35px" }} />
+          <MenuIcon sx={{ color: 'white', fontSize: "35px" }} />
         </IconButton>
 
         {/* Drawer component */}
@@ -111,7 +130,7 @@ export default function TemporaryDrawer() {
           {DrawerList}
         </Drawer>
 
-        {/* Logo at the top-right corner of the page */}
+        {/* Logo at the top-right corner of the page
         <img
           src={img}
           width="200"
@@ -123,7 +142,7 @@ export default function TemporaryDrawer() {
             right: '20px',
             zIndex: 1001, // Ensure the logo is on top of everything else
           }}
-        />
+        /> */}
 
         {/* CSS for animation */}
         <style>

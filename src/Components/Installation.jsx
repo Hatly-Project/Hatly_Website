@@ -10,88 +10,81 @@ export default function AppStoreGooglePlayButtons() {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: '50px',
-        textAlign: 'center',
-        animation: 'fadeIn 1s ease-in-out', // Fade in animation for the component
+        alignItems: 'flex-start', // <<< align left if you want
+        marginTop: '40px',
+        animation: 'fadeIn 1s ease-in-out',
       }}
     >
-      
-
       <Box 
         sx={{
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'row',
           gap: '20px',
-          width: '100%', // Set width of the box to 100%
-          maxWidth: '400px', // Optional: to limit maximum width
+          flexWrap: 'wrap',
+          maxWidth: '500px', // <<< Wider container
+          width: '100%',
         }}
       >
         {/* App Store Button */}
         <Button
-          variant="outlined" // Make the button transparent
+          variant="contained"
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'transparent', // Transparent background
-            color: '#fff', // White text and icon color
-            border: 'none', // Remove border
-            borderRadius: '10px',
-            padding: '10px 0',
-            boxShadow: '0px 4px 10px rgba(0,0,0,0.2)',
-            width: '100%', // Ensure both buttons are the same width
+            flex: 1,
+            minWidth: '220px', // <<< Bigger minimum width
+            height: '60px', // <<< Taller buttons
+            backgroundColor: '#8181E5',
+            color: '#fff',
+            borderRadius: '12px',
+            boxShadow: '0px 6px 15px rgba(0,0,0,0.25)',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            textTransform: 'none',
             '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.1)', // Slight dark background on hover
-              transform: 'scale(1.05)', // Slight scaling effect on hover
-              transition: 'transform 0.3s ease, background-color 0.3s ease', // Smooth transition
+              backgroundColor: '#3333cc',
+              transform: 'scale(1.05)',
+              transition: 'all 0.3s ease',
             },
             '& svg': {
               marginRight: '10px',
               fontSize: '30px',
             }
           }}
-          component={Link} // Optional if you want the button to be a link
+          component={Link}
           to="#"
         >
-          <AppStoreIcon sx={{ color: '#fff' }} />
-          <Typography variant="body1" sx={{ color: '#fff' }}>
-            App Store
-          </Typography>
+          <AppStoreIcon />
+          App Store
         </Button>
 
         {/* Google Play Button */}
         <Button
-          variant="outlined" // Make the button transparent
+          variant="contained"
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'transparent', // Transparent background
-            color: '#fff', // White text and icon color
-            border: 'none', // Remove border
-            borderRadius: '10px',
-            padding: '10px 0',
-            boxShadow: '0px 4px 10px rgba(0,0,0,0.2)',
-            width: '100%', // Ensure both buttons are the same width
+            flex: 1,
+            minWidth: '220px', // <<< Bigger minimum width
+            height: '60px', // <<< Taller buttons
+            backgroundColor: '#8181E5',
+            color: '#fff',
+            borderRadius: '12px',
+            boxShadow: '0px 6px 15px rgba(0,0,0,0.25)',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            textTransform: 'none',
             '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.1)', // Slight dark background on hover
-              transform: 'scale(1.05)', // Slight scaling effect on hover
-              transition: 'transform 0.3s ease, background-color 0.3s ease', // Smooth transition
+              backgroundColor: '#3333cc',
+              transform: 'scale(1.05)',
+              transition: 'all 0.3s ease',
             },
             '& svg': {
               marginRight: '10px',
               fontSize: '30px',
             }
           }}
-          component={Link} // Optional if you want the button to be a link
+          component={Link}
           to="#"
         >
-          <GooglePlayIcon sx={{ color: '#fff' }} />
-          <Typography variant="body1" sx={{ color: '#fff' }}>
-            Google Play
-          </Typography>
+          <GooglePlayIcon />
+          Google Play
         </Button>
       </Box>
 
@@ -99,12 +92,8 @@ export default function AppStoreGooglePlayButtons() {
       <style>
         {`
           @keyframes fadeIn {
-            from {
-              opacity: 0;
-            }
-            to {
-              opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
           }
         `}
       </style>

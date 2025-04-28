@@ -1,0 +1,130 @@
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Box } from '@mui/material';
+import { motion } from 'framer-motion'; // Import framer motion
+import deliver from "../images/delivering.png";
+import connect from "../images/connecting.png";
+import create from "../images/Create Account (5).png";
+import { Slide } from "react-awesome-reveal";
+
+export default function MediaCard() {
+  return (
+    <div style={{ textAlign: "center", paddingBlock: "70px", background: "#f5f5f5" }}>
+      <h1 style={{ color: '#4141DA' }}>How Hatly Works</h1>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' }, // Stack vertically on mobile
+          gap: { xs: 4, md: 6 },                      // Smaller gap on mobile
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        p={4}
+      >
+
+
+        {/* Order Card */}
+        <Slide direction="left" cascade>
+          <Card
+            sx={{
+              maxWidth: 345,
+              width: { xs: '100%', sm: 300, md: 345 }, // Full width on mobile
+              boxShadow: 3,
+              transition: 'all 0.3s ease',
+            }}
+          >
+            <CardMedia
+              component="img"
+              sx={{
+                height: 250,
+                width: '100%',
+                objectFit: 'cover',
+                borderRadius: '8px 8px 0 0',
+                transition: 'transform 0.3s ease',
+              }}
+              image={create}
+              title="Create"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div" sx={{ color: '#4141DA', fontWeight: 'bold' }}>
+                Create
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                Create your account then create your shipment or trip. Hatly connects you to what you need, no matter where you are.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Slide>
+
+        {/* Connect Card */}
+        <Card
+          sx={{
+            maxWidth: 345,
+            width: { xs: '100%', sm: 300, md: 345 },
+            boxShadow: 3,
+            transition: 'all 0.3s ease',
+            marginBottom: { xs: '40px', md: '120px' }, // smaller margin on mobile
+          }}
+        >
+          <CardMedia
+            component="img"
+            sx={{
+              height: 250,
+              width: '100%',
+              objectFit: 'cover',
+              borderRadius: '8px 8px 0 0',
+              transition: 'transform 0.3s ease',
+            }}
+            image={connect}
+            title="Connect"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div" sx={{ color: '#4141DA', fontWeight: 'bold' }}>
+              Connect
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              Your request is matched with trusted travelers heading your way. Chat, confirm the details, and track the journey — all within the app.
+            </Typography>
+          </CardContent>
+        </Card>
+
+        {/* Deliver Card */}
+        <Slide direction="right" cascade>
+          <Card
+            sx={{
+              maxWidth: 345,
+              width: { xs: '100%', sm: 300, md: 345 },
+              boxShadow: 3,
+              transition: 'all 0.3s ease',
+            }}
+          >
+            <CardMedia
+              component="img"
+              sx={{
+                height: 250,
+                width: '100%',
+                objectFit: 'cover',
+                borderRadius: '8px 8px 0 0',
+                transition: 'transform 0.3s ease',
+              }}
+              image={deliver}
+              title="Deliver"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div" sx={{ color: '#4141DA', fontWeight: 'bold' }}>
+                Deliver
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                Receive your product safely and quickly, hand-delivered by a trusted traveler. Hatly makes global shopping easy, personal, and secure.
+              </Typography>
+            </CardContent>
+          </Card>
+        </Slide>
+
+      </Box>
+    </div>
+  );
+}
