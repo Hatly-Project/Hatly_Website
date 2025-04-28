@@ -4,19 +4,46 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box } from '@mui/material';
+import { styled } from '@mui/material/styles'; // Add this import
 import { motion } from 'framer-motion';
 import deliver from "../images/delivering.png";
 import connect from "../images/connecting.png";
 import create from "../images/Create Account (5).png";
-import { Slide } from "react-awesome-reveal";
+import { Slide, Fade } from "react-awesome-reveal";
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  fontWeight: 600,
+  marginBottom: theme.spacing(2),
+  position: 'relative',
+  textAlign: 'center',
+  '&:after': {
+    content: '""',
+    position: 'absolute',
+    bottom: '-12px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: '80px',
+    height: '3px',
+    background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+    borderRadius: '3px'
+  }
+}));
 
 export default function MediaCard() {
   return (
     <div style={{ textAlign: "center", paddingBlock: "70px", background: "#f5f5f5" }}>
-      <Box marginBottom={'30px'}>
-        <h1 style={{ color: '#4141DA', marginBottom: '15px' }}>How Hatly Works</h1>
-        <Box width="20%" height="1px" bgcolor="grey.300" margin={'auto'} />
-      </Box>
+      <Fade>
+        <Box textAlign="center" mb={6}>
+          <SectionTitle variant="h4" component="h2">
+            How Hatly Works
+          </SectionTitle>
+          <Typography variant="subtitle1" color="textSecondary" maxWidth="700px" margin="0 auto" mt={3}>
+            Simple steps to connect senders with travelers
+          </Typography>
+        </Box>
+      </Fade>
+      
       <Box
         sx={{
           display: 'flex',

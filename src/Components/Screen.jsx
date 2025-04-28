@@ -1,89 +1,112 @@
-
-
 import React from "react";
-import { Box, Typography, Paper } from "@mui/material";
-import { motion } from "framer-motion";
+import { Box, Typography, Paper, Grid } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { Fade, Slide } from "react-awesome-reveal";
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PaymentIcon from '@mui/icons-material/Payment';
 import StarRateIcon from '@mui/icons-material/StarRate';
+import middltImg from "../images/middleImg.jpg";
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  fontWeight: 600,
+  marginBottom: theme.spacing(2),
+  position: 'relative',
+  textAlign: 'center',
+  '&:after': {
+    content: '""',
+    position: 'absolute',
+    bottom: '-12px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: '80px',
+    height: '3px',
+    background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+    borderRadius: '3px'
+  }
+}));
+
+const GradientPaper = styled(Paper)(({ theme }) => ({
+  position: 'relative',
+  borderRadius: '20px',
+  overflow: 'hidden',
+  width: '280px', // Fixed width for cards
+  '&:before': {
+    content: '""',
+    position: 'absolute',
+    inset: 0,
+    padding: '2px',
+    background: 'linear-gradient(135deg, #4141DA, #FF8E53)',
+    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+    WebkitMaskComposite: 'xor',
+    maskComposite: 'exclude',
+    pointerEvents: 'none',
+    borderRadius: '20px'
+  }
+}));
 
 const services = [
   {
     icon: <LocalShippingIcon sx={{ fontSize: 50 }} />,
     title: "Shipment Posting",
-    desc: "Shoppers can create shipment listings on the platform, providing details such as the package type, weight, destination, and the reward they are offering to the traveler."
+    desc: "Shoppers can create shipment listings on the platform."
   },
   {
     icon: <AccountCircleIcon sx={{ fontSize: 50 }} />,
     title: "Traveler Profiles",
-    desc: "Travelers can create profiles on the platform, showcasing their travel itineraries, past delivery experiences, and ratings from previous shoppers."
+    desc: "Travelers can create profiles showcasing their itineraries."
   },
   {
     icon: <PaymentIcon sx={{ fontSize: 50 }} />,
     title: "Secure Payments",
-    desc: "The platform facilitates secure payment transactions between shoppers and travelers, ensuring that funds are held in escrow until the delivery is completed successfully."
+    desc: "Secure transactions with funds held in escrow."
   },
   {
     icon: <StarRateIcon sx={{ fontSize: 50 }} />,
     title: "Rating and Reviews",
-    desc: "Shoppers and travelers can rate and review each other after a successful delivery, helping to build trust within the community."
+    desc: "Rate and review to build trust within the community."
   }
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.6,
-      type: "spring"
-    }
-  })
-};
-
 const OurServices = () => (
   <Box sx={{ background: "#f5f5f5", py: 8, textAlign: "center" }}>
-    <Box marginBottom={'30px'}>
-           <h1 style={{ color: '#4141DA' ,marginBottom:'15px'}}>Inside The Platform</h1>
-           <Box width="20%" height="1px" bgcolor="grey.300" margin={'auto'} />
-         </Box>
+    <Fade>
+      <Box textAlign="center" mb={6}>
+        <SectionTitle variant="h4" component="h2">
+          Inside The Platform
+        </SectionTitle>
+        <Typography variant="subtitle1" color="textSecondary" maxWidth="700px" margin="0 auto" mt={3}>
+          Discover the features that make Hatly work
+        </Typography>
+      </Box>
+    </Fade>
 
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        alignItems: "stretch",
-        gap: 1,
-        px: 2
-      }}
-    >
-      {services.map((service, idx) => (
-        <motion.div
-          key={idx}
-          custom={idx}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={cardVariants}
-          style={{ flex: "1 1 250px", maxWidth: "300px" }}
-        >
-          <Paper
-            sx={{
-              p: 4,
+    <Box sx={{ 
+      display: 'flex',
+      flexDirection: { xs: 'column', md: 'row' },
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 4,
+      px: 2
+    }}>
+      {/* Left Cards Column */}
+      <Box sx={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 4,
+        width: { md: '280px' }
+      }}>
+        <Slide direction="left" triggerOnce>
+          <GradientPaper>
+            <Box sx={{
+              p: 3,
               height: "100%",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              backgroundColor: "#f5f5f5",
-              borderRadius:'20px ',
-              
+              backgroundColor: "#fff",
               transition: "all 0.5s ease",
-              border: "none",
-              boxShadow: "none",
               "&:hover": {
                 backgroundColor: "#4141DA",
                 color: "#fff",
@@ -92,26 +115,149 @@ const OurServices = () => (
                   transform: "scale(1.5)",
                 }
               }
-            }}
-          >
-            <Box mb={2} className="icon" sx={{ transition: "all 0.3s ease", color: "#4141DA" }}>
-              {service.icon}
+            }}>
+              <Box mb={2} className="icon" sx={{ transition: "all 0.3s ease", color: "#4141DA" }}>
+                {services[0].icon}
+              </Box>
+              <Typography variant="h6" fontWeight={700} mb={1}>
+                {services[0].title}
+              </Typography>
+              <Typography fontSize="0.9rem" textAlign="center">
+                {services[0].desc}
+              </Typography>
             </Box>
-            <Typography variant="h6" fontWeight={700} mb={2}>
-              {service.title}
-            </Typography>
-            <Typography fontSize="1rem">
-              {service.desc}
-            </Typography>
-          </Paper>
-        </motion.div>
-      ))}
+          </GradientPaper>
+        </Slide>
+
+        <Slide direction="left" triggerOnce delay={200}>
+          <GradientPaper>
+            <Box sx={{
+              p: 3,
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: "#fff",
+              transition: "all 0.5s ease",
+              "&:hover": {
+                backgroundColor: "#4141DA",
+                color: "#fff",
+                "& .icon": {
+                  color: "#fff",
+                  transform: "scale(1.5)",
+                }
+              }
+            }}>
+              <Box mb={2} className="icon" sx={{ transition: "all 0.3s ease", color: "#4141DA" }}>
+                {services[1].icon}
+              </Box>
+              <Typography variant="h6" fontWeight={700} mb={1}>
+                {services[1].title}
+              </Typography>
+              <Typography fontSize="0.9rem" textAlign="center">
+                {services[1].desc}
+              </Typography>
+            </Box>
+          </GradientPaper>
+        </Slide>
+      </Box>
+
+      {/* Middle Image */}
+      <Fade triggerOnce>
+        <Box sx={{
+          width: { xs: '100%', md: '400px' },
+          flexShrink: 0,
+          px: { xs: 0, md: 2 }
+        }}>
+          <Box
+            component="img"
+            src={middltImg}
+            alt="Platform overview"
+            sx={{
+              width: '100%',
+              height: 'auto',
+              borderRadius: '20px',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+              maxHeight: '500px',
+              objectFit: 'contain'
+            }}
+          />
+        </Box>
+      </Fade>
+
+      {/* Right Cards Column */}
+      <Box sx={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 4,
+        width: { md: '280px' }
+      }}>
+        <Slide direction="right" triggerOnce>
+          <GradientPaper>
+            <Box sx={{
+              p: 3,
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: "#fff",
+              transition: "all 0.5s ease",
+              "&:hover": {
+                backgroundColor: "#4141DA",
+                color: "#fff",
+                "& .icon": {
+                  color: "#fff",
+                  transform: "scale(1.5)",
+                }
+              }
+            }}>
+              <Box mb={2} className="icon" sx={{ transition: "all 0.3s ease", color: "#4141DA" }}>
+                {services[2].icon}
+              </Box>
+              <Typography variant="h6" fontWeight={700} mb={1}>
+                {services[2].title}
+              </Typography>
+              <Typography fontSize="0.9rem" textAlign="center">
+                {services[2].desc}
+              </Typography>
+            </Box>
+          </GradientPaper>
+        </Slide>
+
+        <Slide direction="right" triggerOnce delay={200}>
+          <GradientPaper>
+            <Box sx={{
+              p: 3,
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: "#fff",
+              transition: "all 0.5s ease",
+              "&:hover": {
+                backgroundColor: "#4141DA",
+                color: "#fff",
+                "& .icon": {
+                  color: "#fff",
+                  transform: "scale(1.5)",
+                }
+              }
+            }}>
+              <Box mb={2} className="icon" sx={{ transition: "all 0.3s ease", color: "#4141DA" }}>
+                {services[3].icon}
+              </Box>
+              <Typography variant="h6" fontWeight={700} mb={1}>
+                {services[3].title}
+              </Typography>
+              <Typography fontSize="0.9rem" textAlign="center">
+                {services[3].desc}
+              </Typography>
+            </Box>
+          </GradientPaper>
+        </Slide>
+      </Box>
     </Box>
   </Box>
 );
 
 export default OurServices;
-
-
-
-
