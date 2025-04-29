@@ -274,7 +274,7 @@ const AnimatedDivider = styled(Divider)(({ theme }) => ({
   height: "4px",
   width: "80px",
   background: `linear-gradient(90deg, ${colors.primary}, ${colors.accent})`,
-  margin: theme.spacing(4, "auto"),
+  margin: theme.spacing(3),
   borderRadius: "2px",
 }));
 
@@ -320,8 +320,6 @@ const TeamMemberCard = ({ member }) => {
           transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
         },
       }}
-      whileHover={{ y: -10 }}
-      transition={{ type: "spring", stiffness: 300, damping: 15 }}
     >
       <GlowCard>
         <Avatar
@@ -738,9 +736,9 @@ const About = () => {
                       <Typography
                         variant="h2"
                         sx={{
-                          fontWeight: 800,
+                          fontWeight: 400,
                           mb: 1,
-                          fontSize: { xs: "1.8rem", md: "2.2rem" },
+                          fontSize: { xs: "1.4rem", md: "1.8rem" },
                           color: theme.palette.text.primary,
                           lineHeight: 1,
                         }}
@@ -843,8 +841,18 @@ const About = () => {
                   >
                     <GlowCard sx={{ p: 4, height: '100%' }}>
                       <motion.div
-                        whileHover={{ scale: 1.1 }}
-                        transition={{ type: "spring", stiffness: 300 }}
+                        ref={ref}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.3 }}
+                        variants={{
+                          hidden: { opacity: 0, y: 20 },
+                          visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+                          },
+                        }}
                       >
                         <Box
                           sx={{
@@ -928,8 +936,6 @@ const About = () => {
                             transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
                           },
                         }}
-                        whileHover={{ y: -10 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 15 }}
                       >
                         <TeamMemberCard member={member} />
                       </motion.div>
@@ -955,8 +961,6 @@ const About = () => {
                             transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
                           },
                         }}
-                        whileHover={{ y: -10 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 15 }}
                       >
                         <TeamMemberCard member={member} />
                       </motion.div>

@@ -22,12 +22,12 @@ export default function TemporaryDrawer() {
       { name: "Home", path: "/" },
       { name: "F&Qs", path: "/frequently-asked" },
       { name: "About Us", path: "/about-us" },
-      { name: "Contact Us", path: "/contact-us" }
+     
     ];
       const location = useLocation();
       const path = location.pathname;
 
-   const isSpecialPage = path === "/about-us"  || path === "/contact-us" || path ===  "/frequently-asked" ;
+   const isSpecialPage =  path ===  "/frequently-asked" ;
 
     const [open, setOpen] = React.useState(false);
     const navigate = useNavigate(); // Declare the useNavigate hook
