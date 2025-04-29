@@ -32,18 +32,37 @@ const GradientPaper = styled(Paper)(({ theme }) => ({
   position: 'relative',
   borderRadius: '20px',
   overflow: 'hidden',
-  width: '280px', // Fixed width for cards
+  width: '300px',
   '&:before': {
     content: '""',
     position: 'absolute',
-    inset: 0,
-    padding: '2px',
-    background: 'linear-gradient(135deg, #4141DA, #FF8E53)',
-    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-    WebkitMaskComposite: 'xor',
-    maskComposite: 'exclude',
-    pointerEvents: 'none',
-    borderRadius: '20px'
+    top: 0,
+    left: 0,
+    right: 0,
+    height: '5px',
+    background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+    animation: 'gradientMove 3s linear infinite',
+  },
+  '&:after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '5px',
+    background: 'linear-gradient(90deg, #FF8E53, #4141DA)',
+    animation: 'gradientMove 3s linear infinite',
+  },
+  '@keyframes gradientMove': {
+    '0%': {
+      background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+    },
+    '50%': {
+      background: 'linear-gradient(90deg, #FF8E53, #4141DA)',
+    },
+    '100%': {
+      background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+    }
   }
 }));
 
@@ -94,7 +113,7 @@ const OurServices = () => (
         display: 'flex',
         flexDirection: 'column',
         gap: 4,
-        width: { md: '280px' }
+        width: { md: '300px' }
       }}>
         <Slide direction="left" triggerOnce>
           <GradientPaper>
@@ -189,7 +208,7 @@ const OurServices = () => (
         display: 'flex',
         flexDirection: 'column',
         gap: 4,
-        width: { md: '280px' }
+        width: { md: '300px' }
       }}>
         <Slide direction="right" triggerOnce>
           <GradientPaper>

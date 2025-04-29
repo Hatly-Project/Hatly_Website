@@ -172,7 +172,7 @@ export default function FrequentlyAsked() {
     <Box sx={{
       maxWidth: '1200px',
       margin: '60px auto',
-      padding: '0 16px',
+      padding: { xs: '0 16px', md: '0 24px' },
       animation: `${fadeIn} 0.4s both`,
       display: 'flex',
       flexDirection: 'column',
@@ -186,25 +186,18 @@ export default function FrequentlyAsked() {
       {/* Content Container */}
       <Box sx={{ 
         display: 'flex',
-        gap: '70px'
+        flexDirection: { xs: 'column', md: 'row' },
+        gap: '50px',
+        alignItems: 'flex-start'
       }}>
-        {/* Left Column - Accordions */}
+        {/* Left Column */}
         <Box sx={{ 
           flex: 1,
-          maxWidth: '600px'
+          maxWidth: { xs: '100%', md: '600px' },
+          width: '100%'
         }}>
-          {/* Tab Bar */}
-          <Box sx={{ 
-            display: 'flex', 
-            justifyContent: 'center',
-            mb: 4,
-            width: '100%'
-          }}>
-            <AppBar position="static" sx={{ 
-              backgroundColor: 'transparent', 
-              boxShadow: 'none',
-              width: 'auto'
-            }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+            <AppBar position="static" sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
               <Tabs
                 value={activeTab}
                 onChange={handleTabChange}
@@ -218,7 +211,7 @@ export default function FrequentlyAsked() {
                     '&.Mui-selected': {
                       color: '#000000',
                     },
-                    mx: 12,
+                    mx: { xs: 3, sm: 6, md: 12 },
                   },
                 }}
               >
@@ -228,9 +221,9 @@ export default function FrequentlyAsked() {
             </AppBar>
           </Box>
 
-          {/* Shoppers Section */}
+          {/* Shoppers Accordion */}
           {activeTab === 0 && (
-            <Box sx={{ mb: 5, width: '100%' }}>
+            <Box sx={{ mb: 5 }}>
               {(showAllShoppers ? shoppersQuestions : shoppersQuestions.slice(0, 4)).map((item) => (
                 <BeautifulAccordion 
                   key={item.id} 
@@ -259,9 +252,9 @@ export default function FrequentlyAsked() {
                     borderColor: '#4141DA',
                     color: 'white',
                     '&:hover': {
-                      backgroundColor: '#5c5ce6', // lighter version of #4141DA
+                      backgroundColor: '#5c5ce6',
                       borderColor: '#4141DA',
-                      color: 'white', // keep text white on hover
+                      color: 'white',
                     }
                   }}
                 >
@@ -271,9 +264,9 @@ export default function FrequentlyAsked() {
             </Box>
           )}
 
-          {/* Travelers Section */}
+          {/* Travelers Accordion */}
           {activeTab === 1 && (
-            <Box sx={{ width: '100%' }}>
+            <Box>
               {(showAllTravelers ? travelersQuestions : travelersQuestions.slice(0, 4)).map((item) => (
                 <BeautifulAccordion 
                   key={item.id} 
@@ -302,9 +295,9 @@ export default function FrequentlyAsked() {
                     borderColor: '#4141DA',
                     color: 'white',
                     '&:hover': {
-                      backgroundColor: '#5c5ce6', // lighter version of #4141DA
+                      backgroundColor: '#5c5ce6',
                       borderColor: '#4141DA',
-                      color: 'white', // keep text white on hover
+                      color: 'white',
                     }
                   }}
                 >
@@ -320,18 +313,20 @@ export default function FrequentlyAsked() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          width: '400px',
+          width: { xs: '100%', md: '400px' },
           height: 'fit-content',
-          alignSelf: 'flex-start',
+          alignSelf: { xs: 'center', md: 'flex-start' },
+          mt: { xs: 4, md: 0 },
           animation: 'float 3s ease-in-out infinite'
         }}>
           <img 
             src={logo} 
             alt="Logo" 
             style={{ 
-              height: '350px', 
+              height: 'auto',
+              maxHeight: '300px',
               width: 'auto',
-              marginTop: '60px',
+              marginTop: '20px',
               transform: 'rotate(-10deg)'
             }} 
           />
@@ -341,15 +336,9 @@ export default function FrequentlyAsked() {
       <style>
         {`
           @keyframes float {
-            0% {
-              transform: translateY(0);
-            }
-            50% {
-              transform: translateY(-10px);
-            }
-            100% {
-              transform: translateY(0);
-            }
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
           }
         `}
       </style>
