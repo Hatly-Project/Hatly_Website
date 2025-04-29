@@ -4,7 +4,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Box, keyframes, styled } from '@mui/material';
+import { Box, keyframes, styled, Tabs, Tab, AppBar, Button } from '@mui/material';
+import logo from '../images/question.png';
 
 // Animations
 const fadeIn = keyframes`
@@ -60,11 +61,12 @@ const AnimatedTitle = ({ text }) => {
   return (
     <Typography variant="h4" sx={{
       textAlign: 'center',
-      mb: 4,
+      mb: 6,
       fontWeight: 600,
       color: '#4141DA',
-      fontSize: { xs: '1.5rem', md: '1.75rem' },
-      overflow: 'hidden'
+      fontSize: { xs: '1.3rem', md: '1.5rem' },
+      overflow: 'hidden',
+      width: '100%'
     }}>
       {letters.map((letter, index) => (
         <span 
@@ -85,205 +87,272 @@ const AnimatedTitle = ({ text }) => {
 
 export default function FrequentlyAsked() {
   const [expanded, setExpanded] = React.useState(null);
+  const [activeTab, setActiveTab] = React.useState(0);
+  const [showAllShoppers, setShowAllShoppers] = React.useState(false);
+  const [showAllTravelers, setShowAllTravelers] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : null);
   };
 
+  const handleTabChange = (event, newValue) => {
+    setActiveTab(newValue);
+  };
+
+  const toggleShoppers = () => {
+    setShowAllShoppers(!showAllShoppers);
+  };
+
+  const toggleTravelers = () => {
+    setShowAllTravelers(!showAllTravelers);
+  };
+
+  const shoppersQuestions = [
+    {
+      id: 'panel1',
+      question: 'What payment methods do you accept?',
+      answer: 'We accept Visa, MasterCard, American Express, PayPal, Apple Pay, Google Pay, and bank transfers. All transactions are secured with 256-bit SSL encryption.'
+    },
+    {
+      id: 'panel2',
+      question: 'How long does shipping take?',
+      answer: 'Standard shipping takes 3-5 business days. Express shipping (2-day) and overnight options are available at checkout for an additional fee.'
+    },
+    {
+      id: 'panel3',
+      question: 'What is your return policy?',
+      answer: 'We offer a 30-day return policy for most items. Items must be unused, in original packaging with tags attached. Some items like perishables or personalized products may be exempt.'
+    },
+    {
+      id: 'panel4',
+      question: 'Do you offer international shipping?',
+      answer: 'Yes, we ship to over 100 countries worldwide. International shipping rates and delivery times vary by destination. All customs fees and import taxes are the responsibility of the recipient.'
+    },
+    {
+      id: 'panel5',
+      question: 'How can I track my order?',
+      answer: 'Once your order ships, you\'ll receive a tracking number via email. You can track your package through our website or directly with the carrier using this number.'
+    }
+  ];
+
+  const travelersQuestions = [
+    {
+      id: 'panel6',
+      question: 'What travel documents are required?',
+      answer: 'You\'ll need a valid passport (with 6+ months validity beyond your stay) and possibly visas depending on your destination. We recommend checking entry requirements 90 days before travel.'
+    },
+    {
+      id: 'panel7',
+      question: 'Can I modify my booking after payment?',
+      answer: 'Modifications are possible up to 14 days before departure, subject to availability. Name changes may incur fees. For major changes, we recommend travel insurance.'
+    },
+    {
+      id: 'panel8',
+      question: 'What\'s included in the travel package?',
+      answer: 'Our packages typically include flights, accommodations, airport transfers, guided tours, and some meals. Each package details specific inclusions. Optional upgrades are available.'
+    },
+    {
+      id: 'panel9',
+      question: 'Do I need travel insurance?',
+      answer: 'While not mandatory, we strongly recommend comprehensive travel insurance to cover trip cancellations, medical emergencies, lost luggage, and other unforeseen circumstances.'
+    },
+    {
+      id: 'panel10',
+      question: 'What health precautions should I take?',
+      answer: 'Check CDC recommendations for your destination. Some countries require specific vaccinations. Bring any prescription medications in original containers, plus a copy of your prescriptions.'
+    },
+    {
+      id: 'panel11',
+      question: 'How do I handle currency exchange?',
+      answer: 'We recommend exchanging a small amount before departure and using ATMs at your destination for better rates. Notify your bank of travel plans to avoid card blocks. Many places accept credit cards.'
+    }
+  ];
+
   return (
     <Box sx={{
-      maxWidth: '800px',
+      maxWidth: '1200px',
       margin: '60px auto',
       padding: '0 16px',
-      animation: `${fadeIn} 0.4s both`
+      animation: `${fadeIn} 0.4s both`,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '70px'
     }}>
-      {/* Animated Main Title */}
-      <AnimatedTitle text="Frequently Asked Questions" />
-
-      {/* Shoppers Section */}
-      <Box sx={{ mb: 5 }}>
-        <Typography variant="subtitle1" sx={{
-          mb: 2,
-          color: '#4141DA',
-          fontWeight: 700,
-          fontSize: '1.1rem',
-          display: 'flex',
-          alignItems: 'center',
-          '&:after': {
-            content: '""',
-            flex: 1,
-            ml: 2,
-            height: '1px',
-            backgroundColor: 'rgba(65, 65, 218, 0.15)'
-          }
-        }}>
-          Shoppers
-        </Typography>
-
-        <BeautifulAccordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              What payment methods do you accept?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              We accept Visa, MasterCard, American Express, PayPal, Apple Pay, Google Pay, and bank transfers. All transactions are secured with 256-bit SSL encryption.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
-
-        <BeautifulAccordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              How long does shipping take?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Standard shipping takes 3-5 business days. Express shipping (2-day) and overnight options are available at checkout for an additional fee.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
-
-        <BeautifulAccordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              What is your return policy?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              We offer a 30-day return policy for most items. Items must be unused, in original packaging with tags attached. Some items like perishables or personalized products may be exempt.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
-
-        <BeautifulAccordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              Do you offer international shipping?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Yes, we ship to over 100 countries worldwide. International shipping rates and delivery times vary by destination. All customs fees and import taxes are the responsibility of the recipient.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
-
-        <BeautifulAccordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              How can I track my order?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Once your order ships, you'll receive a tracking number via email. You can track your package through our website or directly with the carrier using this number.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
+      {/* Title */}
+      <Box sx={{ width: '100%' }}>
+        <AnimatedTitle text="Frequently Asked Questions" />
       </Box>
 
-      {/* Travelers Section */}
-      <Box>
-        <Typography variant="subtitle1" sx={{
-          mb: 2,
-          color: '#4141DA',
-          fontWeight: 700,
-          fontSize: '1.1rem',
+      {/* Content Container */}
+      <Box sx={{ 
+        display: 'flex',
+        gap: '70px'
+      }}>
+        {/* Left Column - Accordions */}
+        <Box sx={{ 
+          flex: 1,
+          maxWidth: '600px'
+        }}>
+          {/* Tab Bar */}
+          <Box sx={{ 
+            display: 'flex', 
+            justifyContent: 'center',
+            mb: 4,
+            width: '100%'
+          }}>
+            <AppBar position="static" sx={{ 
+              backgroundColor: 'transparent', 
+              boxShadow: 'none',
+              width: 'auto'
+            }}>
+              <Tabs
+                value={activeTab}
+                onChange={handleTabChange}
+                sx={{
+                  '& .MuiTabs-indicator': {
+                    backgroundColor: '#4141DA',
+                  },
+                  '& .MuiTab-root': {
+                    color: '#000000',
+                    fontWeight: 600,
+                    '&.Mui-selected': {
+                      color: '#000000',
+                    },
+                    mx: 12,
+                  },
+                }}
+              >
+                <Tab label="Shoppers" />
+                <Tab label="Travelers" />
+              </Tabs>
+            </AppBar>
+          </Box>
+
+          {/* Shoppers Section */}
+          {activeTab === 0 && (
+            <Box sx={{ mb: 5, width: '100%' }}>
+              {(showAllShoppers ? shoppersQuestions : shoppersQuestions.slice(0, 4)).map((item) => (
+                <BeautifulAccordion 
+                  key={item.id} 
+                  expanded={expanded === item.id} 
+                  onChange={handleChange(item.id)}
+                >
+                  <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
+                    <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
+                      {item.question}
+                    </Typography>
+                  </BeautifulAccordionSummary>
+                  <BeautifulAccordionDetails>
+                    <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                      {item.answer}
+                    </Typography>
+                  </BeautifulAccordionDetails>
+                </BeautifulAccordion>
+              ))}
+              {shoppersQuestions.length > 4 && (
+                <Button 
+                  variant="outlined" 
+                  onClick={toggleShoppers}
+                  sx={{
+                    mt: 2,
+                    backgroundColor: '#4141DA',
+                    borderColor: '#4141DA',
+                    color: 'white',
+                    '&:hover': {
+                      backgroundColor: '#5c5ce6', // lighter version of #4141DA
+                      borderColor: '#4141DA',
+                      color: 'white', // keep text white on hover
+                    }
+                  }}
+                >
+                  {showAllShoppers ? 'Show Less' : 'Show More'}
+                </Button>
+              )}
+            </Box>
+          )}
+
+          {/* Travelers Section */}
+          {activeTab === 1 && (
+            <Box sx={{ width: '100%' }}>
+              {(showAllTravelers ? travelersQuestions : travelersQuestions.slice(0, 4)).map((item) => (
+                <BeautifulAccordion 
+                  key={item.id} 
+                  expanded={expanded === item.id} 
+                  onChange={handleChange(item.id)}
+                >
+                  <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
+                    <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
+                      {item.question}
+                    </Typography>
+                  </BeautifulAccordionSummary>
+                  <BeautifulAccordionDetails>
+                    <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                      {item.answer}
+                    </Typography>
+                  </BeautifulAccordionDetails>
+                </BeautifulAccordion>
+              ))}
+              {travelersQuestions.length > 4 && (
+                <Button 
+                  variant="outlined" 
+                  onClick={toggleTravelers}
+                  sx={{
+                    mt: 2,
+                    backgroundColor: '#4141DA',
+                    borderColor: '#4141DA',
+                    color: 'white',
+                    '&:hover': {
+                      backgroundColor: '#5c5ce6', // lighter version of #4141DA
+                      borderColor: '#4141DA',
+                      color: 'white', // keep text white on hover
+                    }
+                  }}
+                >
+                  {showAllTravelers ? 'Show Less' : 'Show More'}
+                </Button>
+              )}
+            </Box>
+          )}
+        </Box>
+
+        {/* Right Column - Logo */}
+        <Box sx={{ 
           display: 'flex',
           alignItems: 'center',
-          '&:after': {
-            content: '""',
-            flex: 1,
-            ml: 2,
-            height: '1px',
-            backgroundColor: 'rgba(65, 65, 218, 0.15)'
-          }
+          justifyContent: 'center',
+          width: '400px',
+          height: 'fit-content',
+          alignSelf: 'flex-start',
+          animation: 'float 3s ease-in-out infinite'
         }}>
-          Travellers
-        </Typography>
-
-        <BeautifulAccordion expanded={expanded === 'panel6'} onChange={handleChange('panel6')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              What travel documents are required?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              You'll need a valid passport (with 6+ months validity beyond your stay) and possibly visas depending on your destination. We recommend checking entry requirements 90 days before travel.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
-
-        <BeautifulAccordion expanded={expanded === 'panel7'} onChange={handleChange('panel7')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              Can I modify my booking after payment?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Modifications are possible up to 14 days before departure, subject to availability. Name changes may incur fees. For major changes, we recommend travel insurance.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
-
-        <BeautifulAccordion expanded={expanded === 'panel8'} onChange={handleChange('panel8')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              What's included in the travel package?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Our packages typically include flights, accommodations, airport transfers, guided tours, and some meals. Each package details specific inclusions. Optional upgrades are available.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
-
-        <BeautifulAccordion expanded={expanded === 'panel9'} onChange={handleChange('panel9')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              Do I need travel insurance?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              While not mandatory, we strongly recommend comprehensive travel insurance to cover trip cancellations, medical emergencies, lost luggage, and other unforeseen circumstances.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
-
-        <BeautifulAccordion expanded={expanded === 'panel10'} onChange={handleChange('panel10')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              What health precautions should I take?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              Check CDC recommendations for your destination. Some countries require specific vaccinations. Bring any prescription medications in original containers, plus a copy of your prescriptions.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
-
-        <BeautifulAccordion expanded={expanded === 'panel11'} onChange={handleChange('panel11')}>
-          <BeautifulAccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: '#4141DA', fontSize: '1.25rem' }} />}>
-            <Typography sx={{ fontWeight: 500, color: '#4141DA', fontSize: '0.95rem' }}>
-              How do I handle currency exchange?
-            </Typography>
-          </BeautifulAccordionSummary>
-          <BeautifulAccordionDetails>
-            <Typography sx={{ color: '#555', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              We recommend exchanging a small amount before departure and using ATMs at your destination for better rates. Notify your bank of travel plans to avoid card blocks. Many places accept credit cards.
-            </Typography>
-          </BeautifulAccordionDetails>
-        </BeautifulAccordion>
+          <img 
+            src={logo} 
+            alt="Logo" 
+            style={{ 
+              height: '350px', 
+              width: 'auto',
+              marginTop: '60px',
+              transform: 'rotate(-10deg)'
+            }} 
+          />
+        </Box>
       </Box>
+
+      <style>
+        {`
+          @keyframes float {
+            0% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+            100% {
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
     </Box>
   );
 }

@@ -8,7 +8,7 @@ import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import CalculateIcon from '@mui/icons-material/Calculate';
-import middltImg from "../images/Screen1-removebg-preview.png";
+import middltImg from "../images/phone screen1-Photoroom.png";
 
 // Styled components
 const SectionTitle = styled(Typography)(({ theme }) => ({
@@ -156,10 +156,11 @@ const SecondScreen = () => (
             src={middltImg}
             alt="Platform overview"
             sx={{
-              width: "100%",
-              height: "auto",
-              maxHeight: "500px",
-              objectFit: "contain",
+              width: '100%',
+              height: '100%',
+             
+              minHeight: '700px',
+              objectFit: 'cover'
             }}
           />
         </Box>
