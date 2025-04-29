@@ -200,11 +200,11 @@ const About = () => {
             sx={{
               fontWeight: 900,
               mb: 3,
-              fontSize: { xs: "3rem", md: "5rem" },
-              background: "linear-gradient(to right, #fff, #f0f0f0)",
+              fontSize: { xs: "2.5rem", md: "4rem" },
+              background: "linear-gradient(45deg, #fff 30%, #f0f0f0 90%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              textShadow: "0 2px 4px rgba(0,0,0,0.1)",
+              textShadow: "0 2px 4px rgba(0,0,0,0.2)",
             }}
           >
             About Hatly
@@ -214,9 +214,9 @@ const About = () => {
             sx={{
               maxWidth: "800px",
               margin: "auto",
-              fontSize: { xs: "1.2rem", md: "1.5rem" },
-              color: "rgba(255,255,255,0.9)",
-              textShadow: "0 2px 4px rgba(0,0,0,0.1)",
+              fontSize: { xs: "1rem", md: "1.2rem" },
+              color: "rgba(255,255,255,0.95)",
+              textShadow: "0 2px 4px rgba(0,0,0,0.2)",
             }}
           >
             Revolutionizing the future of shipping and logistics
@@ -224,63 +224,79 @@ const About = () => {
         </motion.div>
       </HeroSection>
 
-      <Container maxWidth="lg" sx={{ py: 8 }}>
+      <Container maxWidth="xl" sx={{ py: 8 }}>
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
         >
-          {/* Mission Section */}
-          <Box sx={{ mb: 8 }}>
+          {/* Mission Section with Enhanced Styling */}
+          <Box sx={{ 
+            mb: 8,
+            background: `linear-gradient(135deg, ${alpha(colors.primary, 0.05)}, ${alpha(colors.secondary, 0.05)})`,
+            borderRadius: "24px",
+            p: 4,
+            boxShadow: `0 8px 32px ${alpha(colors.primary, 0.1)}`,
+          }}>
             <motion.div variants={fadeInUp}>
-              <Card>
-                <Stack
-                  direction={{ xs: "column", md: "row" }}
-                  spacing={4}
-                  alignItems="center"
+              <Stack
+                direction={{ xs: "column", md: "row" }}
+                spacing={4}
+                alignItems="center"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
                   <LocalShippingIcon
                     sx={{
-                      fontSize: "8rem",
+                      fontSize: "6rem",
                       color: colors.primary,
-                      opacity: 0.8,
+                      opacity: 0.9,
                       display: { xs: "none", md: "block" },
                     }}
                   />
-                  <Box>
-                    <Typography
-                      variant="h3"
-                      sx={{
-                        fontWeight: 800,
-                        mb: 3,
-                        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                      }}
-                    >
-                      Our Mission
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: "1.2rem",
-                        lineHeight: 1.8,
-                        color: theme.palette.text.secondary,
-                      }}
-                    >
-                      At Hatly, we're transforming the shipping industry through innovation
-                      and technology. Our mission is to make logistics simpler, faster, and
-                      more efficient for everyone. We believe in creating solutions that
-                      not only meet but exceed our customers' expectations.
-                    </Typography>
-                  </Box>
-                </Stack>
-              </Card>
+                </motion.div>
+                <Box>
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontWeight: 800,
+                      mb: 3,
+                      fontSize: { xs: "1.8rem", md: "2.2rem" },
+                      background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    Our Mission
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{
+                      fontSize: "1rem",
+                      lineHeight: 1.8,
+                      color: theme.palette.text.secondary,
+                    }}
+                  >
+                    At Hatly, we're transforming the shipping industry through innovation
+                    and technology. Our mission is to make logistics simpler, faster, and
+                    more efficient for everyone. We believe in creating solutions that
+                    not only meet but exceed our customers' expectations.
+                  </Typography>
+                </Box>
+              </Stack>
             </motion.div>
           </Box>
 
-          {/* About Us Section */}
-          <Box sx={{ mb: 8 }}>
+          {/* About Us Section with Enhanced Styling */}
+          <Box sx={{ 
+            mb: 8,
+            background: `linear-gradient(135deg, ${alpha(colors.secondary, 0.05)}, ${alpha(colors.primary, 0.05)})`,
+            borderRadius: "24px",
+            p: 4,
+            boxShadow: `0 8px 32px ${alpha(colors.secondary, 0.1)}`,
+          }}>
             <motion.div variants={fadeInUp}>
               <Typography
                 variant="h3"
@@ -288,6 +304,7 @@ const About = () => {
                 sx={{
                   fontWeight: 800,
                   mb: 6,
+                  fontSize: { xs: "1.8rem", md: "2.2rem" },
                   background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -297,181 +314,51 @@ const About = () => {
               </Typography>
             </motion.div>
 
-            <Card sx={{ p: 4 }}>
-              <Stack spacing={4}>
-                <Box>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: 700,
-                      mb: 2,
-                      color: colors.primary,
-                    }}
-                  >
-                    Our Journey
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: theme.palette.text.secondary,
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    We are a team of passionate developers who met at the Information Technology Institute (ITI) during an intensive code camp. Our shared passion for technology and innovation brought us together to create something meaningful.
-                  </Typography>
-                </Box>
-
-                <Box>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: 700,
-                      mb: 2,
-                      color: colors.primary,
-                    }}
-                  >
-                    The Project
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: theme.palette.text.secondary,
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    Hatly is our graduation project, born from the desire to revolutionize the shipping and logistics industry. We combined our diverse skills in frontend development, mobile development, and UI/UX design to create a platform that makes shipping simpler, faster, and more efficient for everyone.
-                  </Typography>
-                </Box>
-
-                <Box>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: 700,
-                      mb: 2,
-                      color: colors.primary,
-                    }}
-                  >
-                    Our Vision
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: theme.palette.text.secondary,
-                      lineHeight: 1.8,
-                    }}
-                  >
-                    Through Hatly, we aim to transform the way people think about shipping and logistics. Our platform combines cutting-edge technology with user-friendly design to create a seamless experience for both businesses and individuals.
-                  </Typography>
-                </Box>
-              </Stack>
-            </Card>
-          </Box>
-
-          {/* Team Section */}
-          <Box sx={{ mb: 8 }}>
-            <motion.div variants={fadeInUp}>
-              <Typography
-                variant="h3"
-                align="center"
-                sx={{
-                  fontWeight: 800,
-                  mb: 6,
-                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Meet Our Team
-              </Typography>
-            </motion.div>
-
-            <Grid 
-              container 
-              spacing={3} 
-              justifyContent="center"
-            >
-              {teamMembers.map((member, index) => (
-                <Grid 
-                  item 
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  key={index}
-                >
-                  <motion.div
-                    variants={fadeInUp}
-                    whileHover={{ y: -10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <Card>
-                      <Avatar
-                        sx={{
-                          width: 100,
-                          height: 100,
-                          mx: "auto",
-                          mb: 3,
-                          fontSize: "2.5rem",
-                          fontWeight: 600,
-                          background: `linear-gradient(135deg, ${member.avatarColor}, ${alpha(member.avatarColor, 0.7)})`,
-                          boxShadow: `0 8px 32px ${alpha(member.avatarColor, 0.3)}`,
-                        }}
-                      >
-                        {member.name.split(" ")[0][0]}
-                        {member.name.split(" ")[1][0]}
-                      </Avatar>
+            <Grid container spacing={4}>
+              {[
+                {
+                  title: "Our Journey",
+                  content: "We are a team of passionate developers who met at the Information Technology Institute (ITI) during an intensive code camp. Our shared passion for technology and innovation brought us together to create something meaningful.",
+                },
+                {
+                  title: "The Project",
+                  content: "Hatly is our graduation project, born from the desire to revolutionize the shipping and logistics industry. We combined our diverse skills in frontend development, mobile development, and UI/UX design to create a platform that makes shipping simpler, faster, and more efficient for everyone.",
+                },
+                {
+                  title: "Our Vision",
+                  content: "Through Hatly, we aim to transform the way people think about shipping and logistics. Our platform combines cutting-edge technology with user-friendly design to create a seamless experience for both businesses and individuals.",
+                },
+              ].map((item, index) => (
+                <Grid item xs={12} md={4} key={index}>
+                  <motion.div variants={fadeInUp}>
+                    <Card sx={{ 
+                      height: "100%",
+                      p: 3,
+                      background: `linear-gradient(135deg, ${alpha(colors.primary, 0.08)}, ${alpha(colors.secondary, 0.08)})`,
+                      backdropFilter: "blur(10px)",
+                      border: `1px solid ${alpha(colors.primary, 0.15)}`,
+                    }}>
                       <Typography
                         variant="h5"
                         sx={{
                           fontWeight: 700,
-                          mb: 1,
-                          textAlign: "center",
-                          background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
+                          mb: 2,
+                          fontSize: "1.2rem",
+                          color: colors.primary,
                         }}
                       >
-                        {member.name}
+                        {item.title}
                       </Typography>
                       <Typography
                         variant="body1"
                         sx={{
-                          mb: 3,
-                          color: colors.primary,
-                          fontWeight: 500,
-                          textAlign: "center",
+                          fontSize: "1rem",
+                          color: theme.palette.text.secondary,
+                          lineHeight: 1.8,
                         }}
                       >
-                        {member.role}
+                        {item.content}
                       </Typography>
-                      <Stack
-                        direction="row"
-                        spacing={2}
-                        justifyContent="center"
-                      >
-                        <Link
-                          href={member.linkedin}
-                          target="_blank"
-                          rel="noopener"
-                          sx={{
-                            color: colors.primary,
-                            "&:hover": { color: colors.secondary },
-                          }}
-                        >
-                          <LinkedInIcon />
-                        </Link>
-                        <Link
-                          href={member.github}
-                          target="_blank"
-                          rel="noopener"
-                          sx={{
-                            color: colors.primary,
-                            "&:hover": { color: colors.secondary },
-                          }}
-                        >
-                          <GitHubIcon />
-                        </Link>
-                      </Stack>
                     </Card>
                   </motion.div>
                 </Grid>
@@ -479,8 +366,14 @@ const About = () => {
             </Grid>
           </Box>
 
-          {/* Stats Section */}
-          <Box sx={{ mb: 8 }}>
+          {/* Stats Section with Enhanced Styling */}
+          <Box sx={{ 
+            mb: 8,
+            background: `linear-gradient(135deg, ${alpha(colors.primary, 0.05)}, ${alpha(colors.secondary, 0.05)})`,
+            borderRadius: "24px",
+            p: 4,
+            boxShadow: `0 8px 32px ${alpha(colors.primary, 0.1)}`,
+          }}>
             <motion.div variants={fadeInUp}>
               <Typography
                 variant="h3"
@@ -488,6 +381,7 @@ const About = () => {
                 sx={{
                   fontWeight: 800,
                   mb: 6,
+                  fontSize: { xs: "1.8rem", md: "2.2rem" },
                   background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -510,12 +404,18 @@ const About = () => {
                     whileHover={{ y: -10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <StatsCard>
+                    <Card sx={{ 
+                      p: 3,
+                      background: `linear-gradient(135deg, ${alpha(colors.primary, 0.08)}, ${alpha(colors.secondary, 0.08)})`,
+                      backdropFilter: "blur(10px)",
+                      border: `1px solid ${alpha(colors.primary, 0.15)}`,
+                    }}>
                       <Typography
                         variant="h2"
                         sx={{
                           fontWeight: 800,
                           mb: 2,
+                          fontSize: { xs: "2rem", md: "2.5rem" },
                           background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
                           WebkitBackgroundClip: "text",
                           WebkitTextFillColor: "transparent",
@@ -526,21 +426,28 @@ const About = () => {
                       <Typography
                         variant="h6"
                         sx={{
+                          fontSize: "1rem",
                           color: theme.palette.text.secondary,
                           fontWeight: 500,
                         }}
                       >
                         {stat.label}
                       </Typography>
-                    </StatsCard>
+                    </Card>
                   </motion.div>
                 </Grid>
               ))}
             </Grid>
           </Box>
 
-          {/* Values Section */}
-          <Box sx={{ mb: 8 }}>
+          {/* Values Section with Enhanced Styling */}
+          <Box sx={{ 
+            mb: 8,
+            background: `linear-gradient(135deg, ${alpha(colors.secondary, 0.05)}, ${alpha(colors.primary, 0.05)})`,
+            borderRadius: "24px",
+            p: 4,
+            boxShadow: `0 8px 32px ${alpha(colors.secondary, 0.1)}`,
+          }}>
             <motion.div variants={fadeInUp}>
               <Typography
                 variant="h3"
@@ -548,6 +455,7 @@ const About = () => {
                 sx={{
                   fontWeight: 800,
                   mb: 6,
+                  fontSize: { xs: "1.8rem", md: "2.2rem" },
                   background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -560,17 +468,17 @@ const About = () => {
             <Grid container spacing={4}>
               {[
                 {
-                  icon: <SecurityIcon sx={{ fontSize: "4rem", color: colors.primary }} />,
+                  icon: <SecurityIcon sx={{ fontSize: "3rem", color: colors.primary }} />,
                   title: "Integrity",
                   description: "We prioritize trust and transparency in all our relationships.",
                 },
                 {
-                  icon: <GroupIcon sx={{ fontSize: "4rem", color: colors.primary }} />,
+                  icon: <GroupIcon sx={{ fontSize: "3rem", color: colors.primary }} />,
                   title: "Teamwork",
                   description: "Collaboration is at the core of everything we do.",
                 },
                 {
-                  icon: <LightbulbIcon sx={{ fontSize: "4rem", color: colors.primary }} />,
+                  icon: <LightbulbIcon sx={{ fontSize: "3rem", color: colors.primary }} />,
                   title: "Innovation",
                   description: "We embrace new ideas and constantly push for improvement.",
                 },
@@ -581,13 +489,25 @@ const About = () => {
                     whileHover={{ y: -10 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <Card>
-                      <Box sx={{ mb: 3 }}>{value.icon}</Box>
+                    <Card sx={{ 
+                      p: 3,
+                      height: "100%",
+                      background: `linear-gradient(135deg, ${alpha(colors.primary, 0.08)}, ${alpha(colors.secondary, 0.08)})`,
+                      backdropFilter: "blur(10px)",
+                      border: `1px solid ${alpha(colors.primary, 0.15)}`,
+                    }}>
+                      <motion.div
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                      >
+                        <Box sx={{ mb: 3 }}>{value.icon}</Box>
+                      </motion.div>
                       <Typography
                         variant="h5"
                         sx={{
                           fontWeight: 700,
                           mb: 2,
+                          fontSize: "1.2rem",
                           background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
                           WebkitBackgroundClip: "text",
                           WebkitTextFillColor: "transparent",
@@ -598,6 +518,7 @@ const About = () => {
                       <Typography
                         variant="body1"
                         sx={{
+                          fontSize: "1rem",
                           color: theme.palette.text.secondary,
                           lineHeight: 1.8,
                         }}
@@ -609,6 +530,127 @@ const About = () => {
                 </Grid>
               ))}
             </Grid>
+          </Box>
+
+          {/* Team Section - Moved to End */}
+          <Box sx={{ 
+            mb: 8,
+            background: `linear-gradient(135deg, ${alpha(colors.primary, 0.05)}, ${alpha(colors.secondary, 0.05)})`,
+            borderRadius: "24px",
+            p: 4,
+            boxShadow: `0 8px 32px ${alpha(colors.primary, 0.1)}`,
+          }}>
+            <motion.div variants={fadeInUp}>
+              <Typography
+                variant="h3"
+                align="center"
+                sx={{
+                  fontWeight: 800,
+                  mb: 6,
+                  fontSize: { xs: "1.8rem", md: "2.2rem" },
+                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Meet Our Team
+              </Typography>
+            </motion.div>
+
+            <Box sx={{ 
+              display: "flex", 
+              flexDirection: "row", 
+              justifyContent: "center",
+              gap: 2,
+              flexWrap: "wrap"
+            }}>
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  whileHover={{ y: -10 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  style={{ flex: "0 0 auto" }}
+                >
+                  <Card sx={{ 
+                    p: 2,
+                    background: `linear-gradient(135deg, ${alpha(colors.primary, 0.08)}, ${alpha(colors.secondary, 0.08)})`,
+                    backdropFilter: "blur(10px)",
+                    border: `1px solid ${alpha(colors.primary, 0.15)}`,
+                  }}>
+                    <Avatar
+                      sx={{
+                        width: 80,
+                        height: 80,
+                        mx: "auto",
+                        mb: 2,
+                        fontSize: "2rem",
+                        fontWeight: 600,
+                        background: `linear-gradient(135deg, ${member.avatarColor}, ${alpha(member.avatarColor, 0.7)})`,
+                        boxShadow: `0 8px 32px ${alpha(member.avatarColor, 0.3)}`,
+                      }}
+                    >
+                      {member.name.split(" ")[0][0]}
+                      {member.name.split(" ")[1][0]}
+                    </Avatar>
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        fontWeight: 700,
+                        mb: 1,
+                        fontSize: "1.1rem",
+                        textAlign: "center",
+                        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                      }}
+                    >
+                      {member.name}
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        mb: 2,
+                        fontSize: "0.9rem",
+                        color: colors.primary,
+                        fontWeight: 500,
+                        textAlign: "center",
+                      }}
+                    >
+                      {member.role}
+                    </Typography>
+                    <Stack
+                      direction="row"
+                      spacing={2}
+                      justifyContent="center"
+                    >
+                      <Link
+                        href={member.linkedin}
+                        target="_blank"
+                        rel="noopener"
+                        sx={{
+                          color: colors.primary,
+                          "&:hover": { color: colors.secondary },
+                        }}
+                      >
+                        <LinkedInIcon />
+                      </Link>
+                      <Link
+                        href={member.github}
+                        target="_blank"
+                        rel="noopener"
+                        sx={{
+                          color: colors.primary,
+                          "&:hover": { color: colors.secondary },
+                        }}
+                      >
+                        <GitHubIcon />
+                      </Link>
+                    </Stack>
+                  </Card>
+                </motion.div>
+              ))}
+            </Box>
           </Box>
         </motion.div>
       </Container>
