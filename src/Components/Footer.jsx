@@ -12,16 +12,12 @@ function Footer() {
   const footerLinks = [
     {
       title: "App",
-      links: ["Trade", "Explore", "Download"],
+      links: ["Trade", "Download"],
     },
     {
       title: "Need Help",
-      links: ["About Us", "Contact Us", "Blog"],
-    },
-    {
-      title: "Support",
-      links: ["Help Center", "Community", "FAQs"],
-    },
+      links: ["About Us", "FAQs"],
+    }
   ];
 
   return (
@@ -302,8 +298,7 @@ function Footer() {
                     }
                   }}
                 >
-                  123 Business Ave, Suite 100<br />
-                  San Francisco, CA 94107
+                  Cairo, Egypt
                 </Typography>
               </Stack>
             </Stack>
@@ -457,7 +452,6 @@ function Footer() {
             <Link href="#">Cookie policy</Link>
             <Link href="#">Privacy policy</Link>
             <Link href="#">Terms of service</Link>
-            <Link href="#">Careers</Link>
             <Link href="#">Help center</Link>
           </Stack>
         </Stack>
