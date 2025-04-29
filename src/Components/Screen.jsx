@@ -76,9 +76,7 @@ const OurServices = () => (
         <SectionTitle variant="h4" component="h2">
           Inside The Platform
         </SectionTitle>
-        <Typography variant="subtitle1" color="textSecondary" maxWidth="700px" margin="0 auto" mt={3}>
-          Discover the features that make Hatly work
-        </Typography>
+       
       </Box>
     </Fade>
 

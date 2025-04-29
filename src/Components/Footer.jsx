@@ -33,7 +33,7 @@ function Footer() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        padding: { xs: "20px", md: "60px 20px" },
+        padding: { xs: "20px", md: "60px " },
         flexDirection: "column",
         color: "white",
         position: "relative",
@@ -188,23 +188,45 @@ function Footer() {
               </IconButton>
             </Stack>
 
-            <Stack spacing={1} sx={{ opacity: 0.9 }}>
-              <Stack direction="row" alignItems="center" spacing={1}>
-                <EmailIcon fontSize="small" />
-                <Typography variant="body2">contact@hatly.com</Typography>
-              </Stack>
-              <Stack direction="row" alignItems="center" spacing={1}>
-                <PhoneIcon fontSize="small" />
-                <Typography variant="body2">+1 (555) 123-4567</Typography>
-              </Stack>
-              <Stack direction="row" alignItems="flex-start" spacing={1}>
-                <LocationOnIcon fontSize="small" sx={{ mt: 0.5 }} />
-                <Typography variant="body2">
-                  123 Business Ave, Suite 100<br />
-                  San Francisco, CA 94107
-                </Typography>
-              </Stack>
-            </Stack>
+
+
+<Stack spacing={1} sx={{ opacity: 0.9 }}>
+  <Stack direction="row" alignItems="center" spacing={1}>
+    <EmailIcon fontSize="small" />
+    <Link
+      href="mailto:contact@hatly.com"
+      underline="hover"
+      color="inherit"
+      sx={{ cursor: 'pointer' }}
+    >
+      <Typography variant="body2">contact@hatly.com</Typography>
+    </Link>
+  </Stack>
+
+  <Stack direction="row" alignItems="center" spacing={1}>
+    <PhoneIcon fontSize="small" />
+    <Link
+      href="tel:+15551234567"
+      underline="hover"
+      color="inherit"
+      sx={{ cursor: 'pointer' }}
+    >
+      <Typography variant="body2">+1 (555) 123-4567</Typography>
+    </Link>
+  </Stack>
+
+  <Stack direction="row" alignItems="flex-start" spacing={1}>
+    <LocationOnIcon fontSize="small" sx={{ mt: 0.5 }} />
+   
+      <Typography variant="body2" color="inherit"
+      sx={{ cursor: 'pointer' }}>
+        123 Business Ave, Suite 100<br />
+        San Francisco, CA 94107
+      </Typography>
+ 
+  </Stack>
+</Stack>
+
           </Box>
 
           <Stack

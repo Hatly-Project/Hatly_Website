@@ -38,9 +38,7 @@ export default function MediaCard() {
           <SectionTitle variant="h4" component="h2">
             How Hatly Works
           </SectionTitle>
-          <Typography variant="subtitle1" color="textSecondary" maxWidth="700px" margin="0 auto" mt={3}>
-            Simple steps to connect senders with travelers
-          </Typography>
+        
         </Box>
       </Fade>
       

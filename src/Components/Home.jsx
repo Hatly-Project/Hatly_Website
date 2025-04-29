@@ -5,6 +5,7 @@ import StatsSection from './StateSection'
 import HowWorks from './HowWorks'
 import PlatformFeatues from './platformFeatues'
 import AccordionTransition from './F&Qs'
+import SecondScreen from './SecondScreen'
 
 
 
@@ -16,6 +17,7 @@ function Home() {
              {/* <StatsSection /> */}
                  <Screen/>
                  <HowWorks/>
+                 <SecondScreen/>
                  <PlatformFeatues/>
                  
             

@@ -2,7 +2,8 @@ import React from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import AppStoreIcon from '@mui/icons-material/Apple'; // App Store Icon
 import GooglePlayIcon from '@mui/icons-material/Android'; // Google Play Icon
-import { Link } from 'react-router-dom'; // For routing if needed
+import { Link } from 'react-router-dom'; 
+import { FaGooglePlay } from "react-icons/fa";// For routing if needed
 
 export default function AppStoreGooglePlayButtons() {
   return (
@@ -30,17 +31,20 @@ export default function AppStoreGooglePlayButtons() {
           variant="contained"
           sx={{
             flex: 1,
-            minWidth: '220px', // <<< Bigger minimum width
-            height: '60px', // <<< Taller buttons
-            backgroundColor: '#8181E5',
+            minWidth: '220px',
+            height: '60px',
+            background: 'linear-gradient(135deg, rgba(41, 41, 42, 0.7) 0%, rgba(66, 66, 73, 0.7) 100%)',
             color: '#fff',
             borderRadius: '12px',
-            boxShadow: '0px 6px 15px rgba(0,0,0,0.25)',
+            boxShadow: '0px 8px 20px rgba(0,0,0,0.25), 0px 4px 10px rgba(0,0,0,0.15)',
             fontSize: '16px',
             fontWeight: 'bold',
             textTransform: 'none',
+            backdropFilter: 'blur(5px)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
             '&:hover': {
-              backgroundColor: '#3333cc',
+              background: 'linear-gradient(135deg, rgba(51, 51, 204, 0.8) 0%, rgba(90, 90, 201, 0.8) 100%)',
+              boxShadow: '0px 10px 25px rgba(0,0,0,0.3), 0px 5px 15px rgba(0,0,0,0.2)',
               transform: 'scale(1.05)',
               transition: 'all 0.3s ease',
             },
@@ -61,17 +65,20 @@ export default function AppStoreGooglePlayButtons() {
           variant="contained"
           sx={{
             flex: 1,
-            minWidth: '220px', // <<< Bigger minimum width
-            height: '60px', // <<< Taller buttons
-            backgroundColor: '#8181E5',
+            minWidth: '220px',
+            height: '60px',
+            background: 'linear-gradient(135deg, rgba(41, 41, 42, 0.7) 0%, rgba(66, 66, 73, 0.7) 100%)',
             color: '#fff',
             borderRadius: '12px',
-            boxShadow: '0px 6px 15px rgba(0,0,0,0.25)',
+            boxShadow: '0px 8px 20px rgba(0,0,0,0.25), 0px 4px 10px rgba(0,0,0,0.15)',
             fontSize: '16px',
             fontWeight: 'bold',
             textTransform: 'none',
+            backdropFilter: 'blur(5px)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
             '&:hover': {
-              backgroundColor: '#3333cc',
+              background: 'linear-gradient(135deg, rgba(51, 51, 204, 0.8) 0%, rgba(90, 90, 201, 0.8) 100%)',
+              boxShadow: '0px 10px 25px rgba(0,0,0,0.3), 0px 5px 15px rgba(0,0,0,0.2)',
               transform: 'scale(1.05)',
               transition: 'all 0.3s ease',
             },
@@ -83,7 +90,7 @@ export default function AppStoreGooglePlayButtons() {
           component={Link}
           to="#"
         >
-          <GooglePlayIcon />
+          <FaGooglePlay/>
           Google Play
         </Button>
       </Box>
