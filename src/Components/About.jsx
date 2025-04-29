@@ -161,9 +161,9 @@ const teamMembers = [
 
 // Styled components
 const HeroSection = styled(Box)(({ theme }) => ({
-  background: `linear-gradient(135deg, ${alpha(colors.primary, 0.9)}, ${alpha(
+  background: `linear-gradient(135deg, ${alpha(colors.primary, 0.6)}, ${alpha(
     colors.secondary,
-    0.9
+    0.6
   )}), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat`,
   height: "100vh",
   minHeight: "600px",
@@ -184,7 +184,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
     bottom: 0,
     background: `radial-gradient(circle at 75% 50%, ${alpha(
       colors.teal,
-      0.2
+      0.15
     )} 0%, transparent 50%)`,
   },
   "&::after": {
@@ -196,7 +196,7 @@ const HeroSection = styled(Box)(({ theme }) => ({
     bottom: 0,
     background: `radial-gradient(circle at 25% 80%, ${alpha(
       colors.teal,
-      0.2
+      0.15
     )} 0%, transparent 50%)`,
   },
 }));
