@@ -35,18 +35,24 @@ const GradientPaper = styled(Paper)(({ theme }) => ({
   borderRadius: "20px",
   overflow: "hidden",
   width: "280px",
-  "&:before": {
+  "&::before": {
     content: '""',
     position: "absolute",
     inset: 0,
     padding: "2px",
-    background: "linear-gradient(135deg, #4141DA, #FF8E53)",
-    WebkitMask:
-      "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+    borderRadius: "20px",
+    background: "linear-gradient(270deg, #4141DA, #FF8E53, #4141DA)",
+    backgroundSize: "400% 400%",
+    zIndex: 1,
+    pointerEvents: "none",
+    WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
     WebkitMaskComposite: "xor",
     maskComposite: "exclude",
-    pointerEvents: "none",
-    borderRadius: "20px",
+    animation: "moveGradientBorder 4s linear infinite",
+  },
+  "@keyframes moveGradientBorder": {
+    "0%": { backgroundPosition: "0% 50%" },
+    "100%": { backgroundPosition: "100% 50%" },
   },
 }));
 
