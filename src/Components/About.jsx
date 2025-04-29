@@ -10,24 +10,35 @@ import {
   useTheme,
   Stack,
   Button,
+  Divider,
 } from "@mui/material";
-import { motion } from "framer-motion";
-import SecurityIcon from "@mui/icons-material/Security";
-import GroupIcon from "@mui/icons-material/Group";
-import LightbulbIcon from "@mui/icons-material/Lightbulb";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import {
+  Security as SecurityIcon,
+  Group as GroupIcon,
+  Lightbulb as LightbulbIcon,
+  LinkedIn as LinkedInIcon,
+  GitHub as GitHubIcon,
+  LocalShipping as LocalShippingIcon,
+  RocketLaunch as RocketIcon,
+  TrendingUp as GrowthIcon,
+  Code as CodeIcon,
+  DesignServices as DesignIcon,
+  PhoneAndroid as MobileIcon,
+} from "@mui/icons-material";
 import { alpha } from "@mui/system";
 import { styled } from "@mui/material/styles";
 
-// Color palette
+// Enhanced color palette
 const colors = {
-  primary: "#4141DA",
-  secondary: "#6A5ACD",
-  light: "#F8F9FF",
-  dark: "#1A1A2E",
-  accent: "#FF6B6B",
+  primary: "#4361ee",
+  secondary: "#3a0ca3",
+  light: "#f8f9fa",
+  dark: "#212529",
+  accent: "#f72585",
+  teal: "#4cc9f0",
+  purple: "#7209b7",
 };
 
 // Animation variants
@@ -36,7 +47,24 @@ const fadeInUp = {
   visible: {
     opacity: 1,
     y: 0,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
     transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const scaleUp = {
+  hidden: { scale: 0.9, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -50,56 +78,98 @@ const staggerContainer = {
   },
 };
 
+const slideInLeft = {
+  hidden: { x: -100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
+const slideInRight = {
+  hidden: { x: 100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+  }
+};
+
+const cascadeVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (index) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: index * 0.2,
+      duration: 0.5,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  })
+};
+
 // Team data
 const teamMembers = [
   {
     name: "Ahmed Wael",
-    role: "Software Engineer",
+    role: "Software Developer",
     linkedin: "#",
     github: "#",
     avatarColor: "#4E79A7",
+    icon: <CodeIcon />,
   },
   {
     name: "Alaa Hosny",
-    role: "Software Engineer",
+    role: "Software Developer",
     linkedin: "#",
     github: "#",
     avatarColor: "#F28E2B",
+    icon: <CodeIcon />,
   },
   {
     name: "Asmaa Abdo",
-    role: "Software Engineer",
+    role: "Software Developer",
     linkedin: "#",
     github: "#",
     avatarColor: "#E15759",
+    icon: <CodeIcon />,
   },
   {
     name: "Haneen Khaled",
-    role: "Software Engineer",
+    role: "Software Developer",
     linkedin: "#",
     github: "#",
     avatarColor: "#76B7B2",
+    icon: <CodeIcon />,
   },
   {
     name: "Ismail Khaleel",
-    role: "Software Engineer",
+    role: "Software Developer",
     linkedin: "#",
     github: "#",
     avatarColor: "#59A14F",
+    icon: <CodeIcon />,
   },
   {
     name: "Mohamed Ayman",
-    role: "Software Engineer",
+    role: "Software Developer",
     linkedin: "#",
     github: "#",
     avatarColor: "#EDC948",
+    icon: <CodeIcon />,
   },
 ];
 
 // Styled components
 const HeroSection = styled(Box)(({ theme }) => ({
-  background: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6') center/cover no-repeat fixed`,
-  height: "500px",
+  background: `linear-gradient(135deg, ${alpha(colors.primary, 0.9)}, ${alpha(
+    colors.secondary,
+    0.9
+  )}), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat`,
+  height: "100vh",
+  minHeight: "600px",
+  maxHeight: "1200px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -114,33 +184,69 @@ const HeroSection = styled(Box)(({ theme }) => ({
     left: 0,
     right: 0,
     bottom: 0,
-    background: "radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%)",
+    background: `radial-gradient(circle at 75% 50%, ${alpha(
+      colors.teal,
+      0.2
+    )} 0%, transparent 50%)`,
+  },
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: `radial-gradient(circle at 25% 80%, ${alpha(
+      colors.teal,
+      0.2
+    )} 0%, transparent 50%)`,
   },
 }));
 
 const GradientText = styled(Typography)({
-  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+  background: `linear-gradient(135deg, ${colors.teal}, ${colors.purple})`,
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
   display: "inline-block",
 });
 
-const Card = styled(Paper)(({ theme }) => ({
+const GlowCard = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
-  borderRadius: "16px",
+  borderRadius: "20px",
   height: "100%",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   textAlign: "center",
-  background: `linear-gradient(135deg, ${alpha(colors.primary, 0.05)}, ${alpha(colors.secondary, 0.05)})`,
-  boxShadow: `0 5px 15px rgba(0, 0, 0, 0.05)`,
-  transition: "all 0.3s ease",
+  background: `linear-gradient(135deg, ${alpha(colors.light, 0.9)}, ${alpha(
+    colors.light,
+    0.95
+  )})`,
+  boxShadow: `0 8px 32px ${alpha(colors.dark, 0.1)}`,
+  transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
   border: `1px solid ${alpha(colors.primary, 0.1)}`,
+  overflow: "hidden",
+  position: "relative",
   "&:hover": {
-    transform: "translateY(-5px)",
-    boxShadow: `0 15px 30px rgba(65, 65, 218, 0.1)`,
-    border: `1px solid ${alpha(colors.primary, 0.2)}`,
+    transform: "translateY(-8px)",
+    boxShadow: `0 12px 40px ${alpha(colors.primary, 0.2)}`,
+    "&::before": {
+      opacity: 1,
+    },
+  },
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: `linear-gradient(135deg, ${alpha(colors.primary, 0.03)}, ${alpha(
+      colors.secondary,
+      0.03
+    )})`,
+    opacity: 0,
+    transition: "opacity 0.4s ease",
   },
 }));
 
@@ -152,151 +258,413 @@ const StatsCard = styled(Paper)(({ theme }) => ({
   flexDirection: "column",
   alignItems: "center",
   textAlign: "center",
-  background: `linear-gradient(135deg, ${alpha(colors.primary, 0.05)}, ${alpha(colors.secondary, 0.05)})`,
-  boxShadow: `0 5px 15px rgba(0, 0, 0, 0.05)`,
+  background: `linear-gradient(135deg, ${alpha(colors.primary, 0.05)}, ${alpha(
+    colors.secondary,
+    0.05
+  )})`,
+  boxShadow: `0 5px 15px ${alpha(colors.dark, 0.05)}`,
   transition: "all 0.3s ease",
   border: `1px solid ${alpha(colors.primary, 0.1)}`,
   "&:hover": {
     transform: "translateY(-5px)",
-    boxShadow: `0 15px 30px rgba(65, 65, 218, 0.1)`,
+    boxShadow: `0 15px 30px ${alpha(colors.primary, 0.1)}`,
     border: `1px solid ${alpha(colors.primary, 0.2)}`,
   },
 }));
 
-const StatsSection = styled(Box)(({ theme }) => ({
+const AnimatedDivider = styled(Divider)(({ theme }) => ({
+  height: "4px",
+  width: "80px",
+  background: `linear-gradient(90deg, ${colors.primary}, ${colors.accent})`,
+  margin: theme.spacing(4, "auto"),
+  borderRadius: "2px",
+}));
+
+const AnimatedButton = styled(Button)(({ theme }) => ({
   background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
   color: "white",
-  padding: theme.spacing(8, 0),
-  textAlign: "center",
-  margin: theme.spacing(8, 0),
-  position: "relative",
-  overflow: "hidden",
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: "radial-gradient(circle at top right, rgba(255,255,255,0.1) 0%, transparent 60%)",
+  fontWeight: 600,
+  padding: theme.spacing(1.5, 4),
+  borderRadius: "12px",
+  boxShadow: `0 4px 20px ${alpha(colors.primary, 0.3)}`,
+  transition: "all 0.3s ease",
+  "&:hover": {
+    transform: "translateY(-2px)",
+    boxShadow: `0 6px 24px ${alpha(colors.primary, 0.4)}`,
+    background: `linear-gradient(135deg, ${colors.secondary}, ${colors.primary})`,
   },
 }));
 
-const About = () => {
+const TeamMemberCard = ({ member }) => {
   const theme = useTheme();
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
 
   return (
-    <Box>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+        },
+      }}
+      whileHover={{ y: -10 }}
+      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+    >
+      <GlowCard>
+        <Avatar
+          sx={{
+            width: 80,
+            height: 80,
+            mx: "auto",
+            mb: 2,
+            fontSize: "2rem",
+            fontWeight: 600,
+            background: `linear-gradient(135deg, ${member.avatarColor}, ${alpha(
+              member.avatarColor,
+              0.7
+            )})`,
+            boxShadow: `0 8px 32px ${alpha(member.avatarColor, 0.3)}`,
+          }}
+        >
+          {member.name.split(" ")[0][0]}
+          {member.name.split(" ")[1][0]}
+        </Avatar>
+        <Typography
+          variant="h5"
+          sx={{
+            fontWeight: 700,
+            mb: 1,
+            fontSize: "1.2rem",
+            textAlign: "center",
+            color: theme.palette.text.primary,
+          }}
+        >
+          {member.name}
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            fontSize: "0.95rem",
+            color: colors.primary,
+            fontWeight: 500,
+            textAlign: "center",
+            mb: 2,
+          }}
+        >
+          {member.role}
+        </Typography>
+        <Stack direction="row" spacing={2} justifyContent="center">
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              href={member.linkedin}
+              target="_blank"
+              rel="noopener"
+              sx={{
+                color: colors.primary,
+                "&:hover": { color: colors.secondary },
+              }}
+            >
+              <LinkedInIcon fontSize="medium" />
+            </Link>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              href={member.github}
+              target="_blank"
+              rel="noopener"
+              sx={{
+                color: colors.primary,
+                "&:hover": { color: colors.secondary },
+              }}
+            >
+              <GitHubIcon fontSize="medium" />
+            </Link>
+          </motion.div>
+        </Stack>
+      </GlowCard>
+    </motion.div>
+  );
+};
+
+const About = () => {
+  const theme = useTheme();
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  return (
+    <Box sx={{ overflowX: "hidden" }}>
       {/* Hero Section */}
       <HeroSection>
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          style={{ position: "relative", zIndex: 1 }}
-        >
-          <Typography
-            variant="h1"
-            sx={{
-              fontWeight: 900,
-              mb: 3,
-              fontSize: { xs: "2.5rem", md: "4rem" },
-              background: "linear-gradient(45deg, #fff 30%, #f0f0f0 90%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              textShadow: "0 2px 4px rgba(0,0,0,0.2)",
-            }}
+        <Container maxWidth="lg">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            style={{ position: "relative", zIndex: 1 }}
           >
-            About Hatly
-          </Typography>
-          <Typography
-            variant="h5"
-            sx={{
-              maxWidth: "800px",
-              margin: "auto",
-              fontSize: { xs: "1rem", md: "1.2rem" },
-              color: "rgba(255,255,255,0.95)",
-              textShadow: "0 2px 4px rgba(0,0,0,0.2)",
-            }}
-          >
-            Revolutionizing the future of shipping and logistics
-          </Typography>
-        </motion.div>
+            <Typography
+              variant="h1"
+              sx={{
+                fontWeight: 900,
+                mb: 3,
+                fontSize: { xs: "2.5rem", md: "4.5rem" },
+                lineHeight: 1.2,
+                background: `linear-gradient(to right, white, ${colors.teal})`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                textShadow: "0 2px 10px rgba(0,0,0,0.1)",
+                textAlign: "center",
+              }}
+            >
+              About Us
+            </Typography>
+            <Typography
+              variant="h5"
+              component={motion.p}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              sx={{
+                maxWidth: "800px",
+                margin: "auto",
+                fontSize: { xs: "1rem", md: "1.4rem" },
+                color: "rgba(255,255,255,0.9)",
+                fontWeight: 300,
+                mb: 4,
+                textAlign: "center",
+              }}
+            >
+              At Hatly, we're transforming the shipping industry through innovation
+              and technology. Our mission is to make logistics simpler, faster, and
+              more efficient for everyone. We believe in creating solutions that
+              not only meet but exceed our customers' expectations.
+            </Typography>
+          </motion.div>
+        </Container>
+
+        {/* Animated background elements */}
+        <Box
+          component={motion.div}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.2 }}
+          transition={{ duration: 1.5, delay: 1 }}
+          sx={{
+            position: "absolute",
+            top: "20%",
+            left: "10%",
+            width: "100px",
+            height: "100px",
+            borderRadius: "50%",
+            background: `radial-gradient(circle, ${colors.teal} 0%, transparent 70%)`,
+            filter: "blur(20px)",
+          }}
+        />
+        <Box
+          component={motion.div}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.2 }}
+          transition={{ duration: 1.5, delay: 1.2 }}
+          sx={{
+            position: "absolute",
+            bottom: "15%",
+            right: "15%",
+            width: "150px",
+            height: "150px",
+            borderRadius: "50%",
+            background: `radial-gradient(circle, ${colors.purple} 0%, transparent 70%)`,
+            filter: "blur(30px)",
+          }}
+        />
       </HeroSection>
 
-      <Container maxWidth="xl" sx={{ py: 8 }}>
+      <Container maxWidth="xl" sx={{ py: 8, position: "relative" }}>
+        {/* Background decorative elements */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            width: "300px",
+            height: "300px",
+            background: `radial-gradient(circle, ${alpha(
+              colors.teal,
+              0.1
+            )} 0%, transparent 70%)`,
+            filter: "blur(40px)",
+            zIndex: -1,
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            width: "400px",
+            height: "400px",
+            background: `radial-gradient(circle, ${alpha(
+              colors.purple,
+              0.1
+            )} 0%, transparent 70%)`,
+            filter: "blur(50px)",
+            zIndex: -1,
+          }}
+        />
+
         <motion.div
-          variants={staggerContainer}
+          ref={ref}
           initial="hidden"
-          animate="visible"
+          animate={controls}
+          variants={staggerContainer}
         >
-          {/* Mission Section with Enhanced Styling */}
+          {/* Our Story Section */}
           <Box sx={{ 
-            mb: 8,
-            background: `linear-gradient(135deg, ${alpha(colors.primary, 0.05)}, ${alpha(colors.secondary, 0.05)})`,
-            borderRadius: "24px",
-            p: 4,
-            boxShadow: `0 8px 32px ${alpha(colors.primary, 0.1)}`,
+            mb: { xs: 8, md: 12 }, 
+            position: "relative",
+            px: { xs: 2, md: 8 },
+            maxWidth: "1400px",
+            mx: "auto"
           }}>
             <motion.div variants={fadeInUp}>
               <Stack
-                direction={{ xs: "column", md: "row" }}
-                spacing={4}
+                direction={{ xs: "column", md: "row-reverse" }}
+                spacing={{ xs: 4, md: 6 }}
                 alignItems="center"
               >
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: "spring", stiffness: 300 }}
+                  variants={slideInRight}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.3 }}
+                  style={{ flex: 1 }}
                 >
-                  <LocalShippingIcon
+                  <Box
                     sx={{
-                      fontSize: "6rem",
-                      color: colors.primary,
-                      opacity: 0.9,
-                      display: { xs: "none", md: "block" },
+                      borderRadius: "24px",
+                      overflow: "hidden",
+                      boxShadow: `0 20px 40px ${alpha(colors.dark, 0.2)}`,
+                      position: "relative",
+                      "&::after": {
+                        content: '""',
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: `linear-gradient(135deg, ${alpha(
+                          colors.primary,
+                          0.2
+                        )}, ${alpha(colors.secondary, 0.2)})`,
+                      },
                     }}
-                  />
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+                      alt="Male developers working together"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        display: "block",
+                      }}
+                    />
+                  </Box>
                 </motion.div>
-                <Box>
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      fontWeight: 800,
-                      mb: 3,
-                      fontSize: { xs: "1.8rem", md: "2.2rem" },
-                      background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                  >
-                    Our Mission
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      fontSize: "1rem",
-                      lineHeight: 1.8,
-                      color: theme.palette.text.secondary,
-                    }}
-                  >
-                    At Hatly, we're transforming the shipping industry through innovation
-                    and technology. Our mission is to make logistics simpler, faster, and
-                    more efficient for everyone. We believe in creating solutions that
-                    not only meet but exceed our customers' expectations.
-                  </Typography>
-                </Box>
+                <motion.div
+                  variants={slideInLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.3 }}
+                  style={{ flex: 1 }}
+                >
+                  <Box>
+                    <Typography
+                      variant="h3"
+                      sx={{
+                        fontWeight: 800,
+                        mb: 3,
+                        fontSize: { xs: "1.8rem", md: "2.5rem" },
+                        lineHeight: 1.2,
+                        color: theme.palette.text.primary,
+                      }}
+                    >
+                      Our Story
+                    </Typography>
+                    <AnimatedDivider />
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontSize: "1.1rem",
+                        lineHeight: 1.8,
+                        color: theme.palette.text.secondary,
+                        mb: 4,
+                      }}
+                    >
+                      Hatly was conceived at the prestigious Information Technology Institute (ITI), where a group of innovative minds united with a shared purpose. As software developers, we recognized a significant opportunity to revolutionize the logistics sector through modern technology and user-centric design.
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontSize: "1.1rem",
+                        lineHeight: 1.8,
+                        color: theme.palette.text.secondary,
+                      }}
+                    >
+                      What began as an ambitious graduation project has evolved into a comprehensive logistics platform. By leveraging cutting-edge technology and our deep understanding of industry challenges, we've developed a solution that streamlines shipping processes, enhances efficiency, and delivers exceptional user experiences. Our commitment to innovation and excellence continues to drive us forward as we reshape the future of logistics technology.
+                    </Typography>
+                  </Box>
+                </motion.div>
               </Stack>
             </motion.div>
           </Box>
 
-          {/* About Us Section with Enhanced Styling */}
-          <Box sx={{ 
-            mb: 8,
-            background: `linear-gradient(135deg, ${alpha(colors.secondary, 0.05)}, ${alpha(colors.primary, 0.05)})`,
-            borderRadius: "24px",
-            p: 4,
-            boxShadow: `0 8px 32px ${alpha(colors.secondary, 0.1)}`,
-          }}>
+          {/* Stats Section with cascade effect */}
+          <Box
+            sx={{
+              mb: { xs: 8, md: 12 },
+              background: `linear-gradient(135deg, ${alpha(
+                colors.primary,
+                0.03
+              )}, ${alpha(colors.secondary, 0.03)})`,
+              borderRadius: "24px",
+              p: { xs: 3, md: 6 },
+              position: "relative",
+              overflow: "hidden",
+              "&::before": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234361ee' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                opacity: 0.5,
+              },
+            }}
+          >
             <motion.div variants={fadeInUp}>
               <Typography
                 variant="h3"
@@ -304,127 +672,85 @@ const About = () => {
                 sx={{
                   fontWeight: 800,
                   mb: 6,
-                  fontSize: { xs: "1.8rem", md: "2.2rem" },
-                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
+                  fontSize: { xs: "1.8rem", md: "2.5rem" },
+                  color: theme.palette.text.primary,
+                  position: "relative",
+                  textAlign: "center",
                 }}
               >
-                About Us
+                By The Numbers
               </Typography>
             </motion.div>
 
-            <Grid container spacing={4}>
+            <Grid container spacing={4} justifyContent="center" alignItems="center">
               {[
                 {
-                  title: "Our Journey",
-                  content: "We are a team of passionate developers who met at the Information Technology Institute (ITI) during an intensive code camp. Our shared passion for technology and innovation brought us together to create something meaningful.",
+                  number: "10K+",
+                  label: "Shipments Processed",
+                  icon: <LocalShippingIcon sx={{ fontSize: "2.5rem" }} />,
+                  color: colors.primary,
                 },
                 {
-                  title: "The Project",
-                  content: "Hatly is our graduation project, born from the desire to revolutionize the shipping and logistics industry. We combined our diverse skills in frontend development, mobile development, and UI/UX design to create a platform that makes shipping simpler, faster, and more efficient for everyone.",
+                  number: "98%",
+                  label: "Customer Satisfaction",
+                  icon: <GroupIcon sx={{ fontSize: "2.5rem" }} />,
+                  color: colors.accent,
                 },
                 {
-                  title: "Our Vision",
-                  content: "Through Hatly, we aim to transform the way people think about shipping and logistics. Our platform combines cutting-edge technology with user-friendly design to create a seamless experience for both businesses and individuals.",
+                  number: "24/7",
+                  label: "Support Availability",
+                  icon: <SecurityIcon sx={{ fontSize: "2.5rem" }} />,
+                  color: colors.teal,
                 },
-              ].map((item, index) => (
-                <Grid item xs={12} md={4} key={index}>
-                  <motion.div variants={fadeInUp}>
-                    <Card sx={{ 
-                      height: "100%",
-                      p: 3,
-                      background: `linear-gradient(135deg, ${alpha(colors.primary, 0.08)}, ${alpha(colors.secondary, 0.08)})`,
-                      backdropFilter: "blur(10px)",
-                      border: `1px solid ${alpha(colors.primary, 0.15)}`,
-                    }}>
-                      <Typography
-                        variant="h5"
-                        sx={{
-                          fontWeight: 700,
-                          mb: 2,
-                          fontSize: "1.2rem",
-                          color: colors.primary,
-                        }}
-                      >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          fontSize: "1rem",
-                          color: theme.palette.text.secondary,
-                          lineHeight: 1.8,
-                        }}
-                      >
-                        {item.content}
-                      </Typography>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-
-          {/* Stats Section with Enhanced Styling */}
-          <Box sx={{ 
-            mb: 8,
-            background: `linear-gradient(135deg, ${alpha(colors.primary, 0.05)}, ${alpha(colors.secondary, 0.05)})`,
-            borderRadius: "24px",
-            p: 4,
-            boxShadow: `0 8px 32px ${alpha(colors.primary, 0.1)}`,
-          }}>
-            <motion.div variants={fadeInUp}>
-              <Typography
-                variant="h3"
-                align="center"
-                sx={{
-                  fontWeight: 800,
-                  mb: 6,
-                  fontSize: { xs: "1.8rem", md: "2.2rem" },
-                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                Our Achievements
-              </Typography>
-            </motion.div>
-
-            <Grid container spacing={3} justifyContent="center">
-              {[
-                { number: "12+", label: "Team Members" },
-                { number: "100+", label: "Projects Delivered" },
-                { number: "5+", label: "Years Experience" },
-                { number: "24/7", label: "Support" },
+                {
+                  number: "5x",
+                  label: "Faster Than Industry Avg",
+                  icon: <RocketIcon sx={{ fontSize: "2.5rem" }} />,
+                  color: colors.purple,
+                },
               ].map((stat, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
+                <Grid item xs={12} sm={6} md={3} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
                   <motion.div
-                    variants={fadeInUp}
-                    whileHover={{ y: -10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    custom={index}
+                    variants={cascadeVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    style={{ width: '100%', maxWidth: '300px' }}
                   >
-                    <Card sx={{ 
-                      p: 3,
-                      background: `linear-gradient(135deg, ${alpha(colors.primary, 0.08)}, ${alpha(colors.secondary, 0.08)})`,
-                      backdropFilter: "blur(10px)",
-                      border: `1px solid ${alpha(colors.primary, 0.15)}`,
-                    }}>
+                    <GlowCard sx={{ p: 3 }}>
+                      <Box
+                        sx={{
+                          width: "80px",
+                          height: "80px",
+                          borderRadius: "50%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          background: `linear-gradient(135deg, ${alpha(
+                            stat.color,
+                            0.1
+                          )}, ${alpha(stat.color, 0.2)})`,
+                          mb: 3,
+                          color: stat.color,
+                        }}
+                      >
+                        {stat.icon}
+                      </Box>
                       <Typography
                         variant="h2"
                         sx={{
                           fontWeight: 800,
-                          mb: 2,
-                          fontSize: { xs: "2rem", md: "2.5rem" },
-                          background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
+                          mb: 1,
+                          fontSize: { xs: "1.8rem", md: "2.2rem" },
+                          color: theme.palette.text.primary,
+                          lineHeight: 1,
                         }}
                       >
                         {stat.number}
                       </Typography>
                       <Typography
-                        variant="h6"
+                        variant="body1"
                         sx={{
                           fontSize: "1rem",
                           color: theme.palette.text.secondary,
@@ -433,21 +759,20 @@ const About = () => {
                       >
                         {stat.label}
                       </Typography>
-                    </Card>
+                    </GlowCard>
                   </motion.div>
                 </Grid>
               ))}
             </Grid>
           </Box>
 
-          {/* Values Section with Enhanced Styling */}
-          <Box sx={{ 
-            mb: 8,
-            background: `linear-gradient(135deg, ${alpha(colors.secondary, 0.05)}, ${alpha(colors.primary, 0.05)})`,
-            borderRadius: "24px",
-            p: 4,
-            boxShadow: `0 8px 32px ${alpha(colors.secondary, 0.1)}`,
-          }}>
+          {/* Values Section with cascade effect */}
+          <Box
+            sx={{
+              mb: { xs: 8, md: 12 },
+              position: "relative",
+            }}
+          >
             <motion.div variants={fadeInUp}>
               <Typography
                 variant="h3"
@@ -455,62 +780,92 @@ const About = () => {
                 sx={{
                   fontWeight: 800,
                   mb: 6,
-                  fontSize: { xs: "1.8rem", md: "2.2rem" },
-                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
+                  fontSize: { xs: "1.8rem", md: "2.5rem" },
+                  color: theme.palette.text.primary,
+                  textAlign: "center",
                 }}
               >
-                Our Values
+                Our Core Values
               </Typography>
             </motion.div>
 
-            <Grid container spacing={4}>
+            <Grid container spacing={4} justifyContent="center" alignItems="center">
               {[
                 {
-                  icon: <SecurityIcon sx={{ fontSize: "3rem", color: colors.primary }} />,
+                  icon: (
+                    <SecurityIcon
+                      sx={{ fontSize: "3rem", color: colors.primary }}
+                    />
+                  ),
                   title: "Integrity",
-                  description: "We prioritize trust and transparency in all our relationships.",
+                  description:
+                    "We believe in doing the right thing, even when no one is watching. Trust is the foundation of all our relationships.",
+                  color: colors.primary,
                 },
                 {
-                  icon: <GroupIcon sx={{ fontSize: "3rem", color: colors.primary }} />,
-                  title: "Teamwork",
-                  description: "Collaboration is at the core of everything we do.",
+                  icon: (
+                    <GroupIcon sx={{ fontSize: "3rem", color: colors.accent }} />
+                  ),
+                  title: "Collaboration",
+                  description:
+                    "Great things are never done alone. We work together across disciplines to create exceptional solutions.",
+                  color: colors.accent,
                 },
                 {
-                  icon: <LightbulbIcon sx={{ fontSize: "3rem", color: colors.primary }} />,
+                  icon: (
+                    <LightbulbIcon
+                      sx={{ fontSize: "3rem", color: colors.teal }}
+                    />
+                  ),
                   title: "Innovation",
-                  description: "We embrace new ideas and constantly push for improvement.",
+                  description:
+                    "We challenge the status quo and push boundaries to create transformative logistics solutions.",
+                  color: colors.teal,
+                },
+                {
+                  icon: (
+                    <GrowthIcon
+                      sx={{ fontSize: "3rem", color: colors.purple }}
+                    />
+                  ),
+                  title: "Growth",
+                  description:
+                    "We're committed to continuous learning and improvement, both as individuals and as a company.",
+                  color: colors.purple,
                 },
               ].map((value, index) => (
-                <Grid item xs={12} sm={4} key={index}>
+                <Grid item xs={12} sm={6} md={3} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
                   <motion.div
-                    variants={fadeInUp}
-                    whileHover={{ y: -10 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    custom={index}
+                    variants={cascadeVariant}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    style={{ width: '100%', maxWidth: '300px' }}
                   >
-                    <Card sx={{ 
-                      p: 3,
-                      height: "100%",
-                      background: `linear-gradient(135deg, ${alpha(colors.primary, 0.08)}, ${alpha(colors.secondary, 0.08)})`,
-                      backdropFilter: "blur(10px)",
-                      border: `1px solid ${alpha(colors.primary, 0.15)}`,
-                    }}>
+                    <GlowCard sx={{ p: 4, height: '100%' }}>
                       <motion.div
                         whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <Box sx={{ mb: 3 }}>{value.icon}</Box>
+                        <Box
+                          sx={{
+                            mb: 3,
+                            display: "flex",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {value.icon}
+                        </Box>
                       </motion.div>
                       <Typography
                         variant="h5"
                         sx={{
                           fontWeight: 700,
                           mb: 2,
-                          fontSize: "1.2rem",
-                          background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
+                          fontSize: "1.3rem",
+                          color: theme.palette.text.primary,
+                          textAlign: "center",
                         }}
                       >
                         {value.title}
@@ -521,25 +876,20 @@ const About = () => {
                           fontSize: "1rem",
                           color: theme.palette.text.secondary,
                           lineHeight: 1.8,
+                          textAlign: "center",
                         }}
                       >
                         {value.description}
                       </Typography>
-                    </Card>
+                    </GlowCard>
                   </motion.div>
                 </Grid>
               ))}
             </Grid>
           </Box>
 
-          {/* Team Section - Moved to End */}
-          <Box sx={{ 
-            mb: 8,
-            background: `linear-gradient(135deg, ${alpha(colors.primary, 0.05)}, ${alpha(colors.secondary, 0.05)})`,
-            borderRadius: "24px",
-            p: 4,
-            boxShadow: `0 8px 32px ${alpha(colors.primary, 0.1)}`,
-          }}>
+          {/* Team Section */}
+          <Box sx={{ mb: { xs: 8, md: 12 }, position: "relative" }}>
             <motion.div variants={fadeInUp}>
               <Typography
                 variant="h3"
@@ -547,110 +897,76 @@ const About = () => {
                 sx={{
                   fontWeight: 800,
                   mb: 6,
-                  fontSize: { xs: "1.8rem", md: "2.2rem" },
-                  background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
+                  fontSize: { xs: "1.8rem", md: "2.5rem" },
+                  color: theme.palette.text.primary,
                 }}
               >
-                Meet Our Team
+                Meet The Team
               </Typography>
             </motion.div>
 
-            <Box sx={{ 
-              display: "flex", 
-              flexDirection: "row", 
-              justifyContent: "center",
-              gap: 2,
-              flexWrap: "wrap"
-            }}>
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  whileHover={{ y: -10 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  style={{ flex: "0 0 auto" }}
-                >
-                  <Card sx={{ 
-                    p: 2,
-                    background: `linear-gradient(135deg, ${alpha(colors.primary, 0.08)}, ${alpha(colors.secondary, 0.08)})`,
-                    backdropFilter: "blur(10px)",
-                    border: `1px solid ${alpha(colors.primary, 0.15)}`,
-                  }}>
-                    <Avatar
-                      sx={{
-                        width: 80,
-                        height: 80,
-                        mx: "auto",
-                        mb: 2,
-                        fontSize: "2rem",
-                        fontWeight: 600,
-                        background: `linear-gradient(135deg, ${member.avatarColor}, ${alpha(member.avatarColor, 0.7)})`,
-                        boxShadow: `0 8px 32px ${alpha(member.avatarColor, 0.3)}`,
-                      }}
-                    >
-                      {member.name.split(" ")[0][0]}
-                      {member.name.split(" ")[1][0]}
-                    </Avatar>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        fontWeight: 700,
-                        mb: 1,
-                        fontSize: "1.1rem",
-                        textAlign: "center",
-                        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                      }}
-                    >
-                      {member.name}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        mb: 2,
-                        fontSize: "0.9rem",
-                        color: colors.primary,
-                        fontWeight: 500,
-                        textAlign: "center",
-                      }}
-                    >
-                      {member.role}
-                    </Typography>
-                    <Stack
-                      direction="row"
-                      spacing={2}
-                      justifyContent="center"
-                    >
-                      <Link
-                        href={member.linkedin}
-                        target="_blank"
-                        rel="noopener"
-                        sx={{
-                          color: colors.primary,
-                          "&:hover": { color: colors.secondary },
+            <Grid 
+              container 
+              spacing={4} 
+              justifyContent="center" 
+              alignItems="stretch"
+              sx={{ maxWidth: "1400px", mx: "auto" }}
+            >
+              {/* First Row */}
+              <Grid item xs={12} container spacing={4} justifyContent="center">
+                {teamMembers.slice(0, 3).map((member, index) => (
+                  <Grid item xs={12} sm={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Box sx={{ width: '100%', maxWidth: '320px' }}>
+                      <motion.div
+                        ref={ref}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.3 }}
+                        variants={{
+                          hidden: { opacity: 0, y: 20 },
+                          visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+                          },
                         }}
+                        whileHover={{ y: -10 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 15 }}
                       >
-                        <LinkedInIcon />
-                      </Link>
-                      <Link
-                        href={member.github}
-                        target="_blank"
-                        rel="noopener"
-                        sx={{
-                          color: colors.primary,
-                          "&:hover": { color: colors.secondary },
+                        <TeamMemberCard member={member} />
+                      </motion.div>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+              {/* Second Row */}
+              <Grid item xs={12} container spacing={4} justifyContent="center">
+                {teamMembers.slice(3, 6).map((member, index) => (
+                  <Grid item xs={12} sm={4} key={index + 3} sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Box sx={{ width: '100%', maxWidth: '320px' }}>
+                      <motion.div
+                        ref={ref}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.3 }}
+                        variants={{
+                          hidden: { opacity: 0, y: 20 },
+                          visible: {
+                            opacity: 1,
+                            y: 0,
+                            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+                          },
                         }}
+                        whileHover={{ y: -10 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 15 }}
                       >
-                        <GitHubIcon />
-                      </Link>
-                    </Stack>
-                  </Card>
-                </motion.div>
-              ))}
-            </Box>
+                        <TeamMemberCard member={member} />
+                      </motion.div>
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Grid>
           </Box>
         </motion.div>
       </Container>
