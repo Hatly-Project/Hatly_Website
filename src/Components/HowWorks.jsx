@@ -38,7 +38,9 @@ export default function MediaCard() {
           <SectionTitle variant="h4" component="h2">
             How Hatly Works
           </SectionTitle>
-        
+          <Typography variant="subtitle1" sx={{ color: 'text.secondary', maxWidth: '700px', margin: '0 auto' }}>
+            Three simple steps to get your items delivered through  trusted travellers.
+          </Typography>
         </Box>
       </Fade>
       

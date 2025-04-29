@@ -38,6 +38,7 @@ function Footer() {
         color: "white",
         position: "relative",
         overflow: "hidden",
+        boxShadow: "0 -10px 30px rgba(65, 65, 218, 0.3)",
         "&:before": {
           content: '""',
           position: "absolute",
@@ -49,6 +50,7 @@ function Footer() {
         },
       }}
     >
+      {/* Background decorative elements */}
       <Box
         sx={{
           position: "absolute",
@@ -77,6 +79,40 @@ function Footer() {
         }}
       />
 
+      {/* Animated floating circles */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "20%",
+          right: "15%",
+          width: "10px",
+          height: "10px",
+          borderRadius: "50%",
+          backgroundColor: "rgba(255,255,255,0.3)",
+          animation: "float 6s ease-in-out infinite",
+          "@keyframes float": {
+            "0%, 100%": { transform: "translateY(0) translateX(0)" },
+            "50%": { transform: "translateY(-20px) translateX(10px)" },
+          },
+        }}
+      />
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "30%",
+          left: "20%",
+          width: "8px",
+          height: "8px",
+          borderRadius: "50%",
+          backgroundColor: "rgba(255,255,255,0.2)",
+          animation: "float2 5s ease-in-out infinite",
+          "@keyframes float2": {
+            "0%, 100%": { transform: "translateY(0) translateX(0)" },
+            "50%": { transform: "translateY(15px) translateX(-5px)" },
+          },
+        }}
+      />
+
       <Box
         sx={{
           width: "100%",
@@ -96,6 +132,7 @@ function Footer() {
             textAlign: { xs: "center", md: "left" },
           }}
         >
+          {/* Brand Info Column */}
           <Box
             sx={{
               flex: { xs: "1 1 100%", md: "1" },
@@ -113,14 +150,35 @@ function Footer() {
                 backgroundClip: "text",
                 color: "transparent",
                 display: "inline-block",
+                textShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                fontSize: { xs: "1.8rem", md: "2.2rem" },
               }}
             >
               HATLY
             </Typography>
-            <Typography variant="body1" sx={{ mb: 2, opacity: 0.9 }}>
+            <Typography 
+              variant="body1" 
+              sx={{ 
+                mb: 2, 
+                opacity: 0.9,
+                fontStyle: "italic",
+                position: "relative",
+                display: "inline-block",
+                "&:after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: -8,
+                  left: 0,
+                  width: "100%",
+                  height: "1px",
+                  background: "linear-gradient(90deg, rgba(255,255,255,0.5), transparent)",
+                }
+              }}
+            >
               From here to here .. We make it Clear.
             </Typography>
             
+            {/* Social Icons */}
             <Stack direction="row" spacing={1} sx={{ mb: 3 }}>
               <IconButton
                 href="https://web.facebook.com/profile.php?id=61561175183049"
@@ -132,8 +190,10 @@ function Footer() {
                   "&:hover": {
                     bgcolor: "#1877F2",
                     transform: "translateY(-3px)",
+                    boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
                   },
                   transition: "all 0.3s ease",
+                  backdropFilter: "blur(5px)",
                 }}
               >
                 <FacebookIcon />
@@ -148,8 +208,10 @@ function Footer() {
                   "&:hover": {
                     bgcolor: "#1DA1F2",
                     transform: "translateY(-3px)",
+                    boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
                   },
                   transition: "all 0.3s ease",
+                  backdropFilter: "blur(5px)",
                 }}
               >
                 <TwitterIcon />
@@ -164,8 +226,10 @@ function Footer() {
                   "&:hover": {
                     bgcolor: "#0A66C2",
                     transform: "translateY(-3px)",
+                    boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
                   },
                   transition: "all 0.3s ease",
+                  backdropFilter: "blur(5px)",
                 }}
               >
                 <LinkedInIcon />
@@ -180,55 +244,72 @@ function Footer() {
                   "&:hover": {
                     background: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)",
                     transform: "translateY(-3px)",
+                    boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
                   },
                   transition: "all 0.3s ease",
+                  backdropFilter: "blur(5px)",
                 }}
               >
                 <InstagramIcon />
               </IconButton>
             </Stack>
 
+            {/* Contact Info */}
+            <Stack spacing={1.5} sx={{ opacity: 0.9 }}>
+              <Stack direction="row" alignItems="center" spacing={1.5}>
+                <EmailIcon fontSize="small" sx={{ color: "#E0E0FF" }} />
+                <Link
+                  href="mailto:contact@hatly.com"
+                  underline="hover"
+                  color="inherit"
+                  sx={{ 
+                    cursor: 'pointer',
+                    "&:hover": {
+                      color: "white",
+                    }
+                  }}
+                >
+                  <Typography variant="body2">contact@hatly.com</Typography>
+                </Link>
+              </Stack>
 
+              <Stack direction="row" alignItems="center" spacing={1.5}>
+                <PhoneIcon fontSize="small" sx={{ color: "#E0E0FF" }} />
+                <Link
+                  href="tel:+15551234567"
+                  underline="hover"
+                  color="inherit"
+                  sx={{ 
+                    cursor: 'pointer',
+                    "&:hover": {
+                      color: "white",
+                    }
+                  }}
+                >
+                  <Typography variant="body2">+1 (555) 123-4567</Typography>
+                </Link>
+              </Stack>
 
-<Stack spacing={1} sx={{ opacity: 0.9 }}>
-  <Stack direction="row" alignItems="center" spacing={1}>
-    <EmailIcon fontSize="small" />
-    <Link
-      href="mailto:contact@hatly.com"
-      underline="hover"
-      color="inherit"
-      sx={{ cursor: 'pointer' }}
-    >
-      <Typography variant="body2">contact@hatly.com</Typography>
-    </Link>
-  </Stack>
-
-  <Stack direction="row" alignItems="center" spacing={1}>
-    <PhoneIcon fontSize="small" />
-    <Link
-      href="tel:+15551234567"
-      underline="hover"
-      color="inherit"
-      sx={{ cursor: 'pointer' }}
-    >
-      <Typography variant="body2">+1 (555) 123-4567</Typography>
-    </Link>
-  </Stack>
-
-  <Stack direction="row" alignItems="flex-start" spacing={1}>
-    <LocationOnIcon fontSize="small" sx={{ mt: 0.5 }} />
-   
-      <Typography variant="body2" color="inherit"
-      sx={{ cursor: 'pointer' }}>
-        123 Business Ave, Suite 100<br />
-        San Francisco, CA 94107
-      </Typography>
- 
-  </Stack>
-</Stack>
-
+              <Stack direction="row" alignItems="flex-start" spacing={1.5}>
+                <LocationOnIcon fontSize="small" sx={{ color: "#E0E0FF", mt: 0.5 }} />
+                <Typography 
+                  variant="body2" 
+                  color="inherit"
+                  sx={{ 
+                    cursor: 'pointer',
+                    "&:hover": {
+                      color: "white",
+                    }
+                  }}
+                >
+                  123 Business Ave, Suite 100<br />
+                  San Francisco, CA 94107
+                </Typography>
+              </Stack>
+            </Stack>
           </Box>
 
+          {/* Links Columns */}
           <Stack
             direction={{ xs: "column", sm: "row" }}
             spacing={{ xs: 4, sm: 6, md: 8 }}
@@ -245,6 +326,8 @@ function Footer() {
                     fontWeight: "bold",
                     mb: 3,
                     position: "relative",
+                    fontSize: "1.1rem",
+                    letterSpacing: "0.5px",
                     "&:after": {
                       content: '""',
                       position: "absolute",
@@ -255,7 +338,11 @@ function Footer() {
                       height: "3px",
                       background: "linear-gradient(90deg, #FFFFFF, #E0E0FF)",
                       borderRadius: "2px",
+                      transition: "width 0.3s ease",
                     },
+                    "&:hover:after": {
+                      width: "60px",
+                    }
                   }}
                 >
                   {section.title}
@@ -271,8 +358,11 @@ function Footer() {
                         "&:hover": {
                           color: "white",
                           transform: "translateX(5px)",
+                          textShadow: "0 0 5px rgba(255,255,255,0.5)",
                         },
                         transition: "all 0.2s ease",
+                        fontSize: "0.95rem",
+                        display: "inline-block",
                       }}
                     >
                       {link}
@@ -284,22 +374,40 @@ function Footer() {
           </Stack>
         </Stack>
 
+        {/* Divider */}
         <Box
           sx={{
             width: "100%",
             height: "1px",
             bgcolor: "rgba(255,255,255,0.2)",
             my: 5,
+            position: "relative",
+            "&:before": {
+              content: '""',
+              position: "absolute",
+              left: 0,
+              top: 0,
+              width: "100px",
+              height: "1px",
+              background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)",
+            }
           }}
         />
 
+        {/* Bottom Section */}
         <Stack
           direction={{ xs: "column-reverse", md: "row" }}
           justifyContent="space-between"
           alignItems="center"
           spacing={2}
         >
-          <Typography variant="body2" sx={{ opacity: 0.9 }}>
+          <Typography 
+            variant="body2" 
+            sx={{ 
+              opacity: 0.8,
+              fontSize: "0.85rem",
+            }}
+          >
             © {new Date().getFullYear()} HATLY. All rights reserved.
           </Typography>
 
@@ -322,12 +430,27 @@ function Footer() {
               "& a": {
                 color: "rgba(255,255,255,0.9)",
                 textDecoration: "none",
-                fontSize: "0.875rem",
+                fontSize: "0.85rem",
                 "&:hover": {
                   color: "white",
                   textDecoration: "underline",
+                  textShadow: "0 0 5px rgba(255,255,255,0.3)",
                 },
                 transition: "all 0.2s ease",
+                position: "relative",
+                "&:after": {
+                  content: '""',
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  width: "0%",
+                  height: "1px",
+                  bgcolor: "white",
+                  transition: "width 0.3s ease",
+                },
+                "&:hover:after": {
+                  width: "100%",
+                }
               },
             }}
           >
