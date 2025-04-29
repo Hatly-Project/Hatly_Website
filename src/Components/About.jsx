@@ -24,8 +24,6 @@ import {
   RocketLaunch as RocketIcon,
   TrendingUp as GrowthIcon,
   Code as CodeIcon,
-  DesignServices as DesignIcon,
-  PhoneAndroid as MobileIcon,
 } from "@mui/icons-material";
 import { alpha } from "@mui/system";
 import { styled } from "@mui/material/styles";
@@ -623,7 +621,7 @@ const About = () => {
                         mb: 4,
                       }}
                     >
-                      Hatly was conceived at the prestigious Information Technology Institute (ITI), where a group of innovative minds united with a shared purpose. As software developers, we recognized a significant opportunity to revolutionize the logistics sector through modern technology and user-centric design.
+                      Hatly was born from a shared vision to revolutionize the shipping industry. Our journey began at the Information Technology Institute (ITI), where six passionate developers came together during an intensive code camp. United by our frustration with outdated logistics systems, we set out to build a platform that combines cutting-edge technology with human-centered design.
                     </Typography>
                     <Typography
                       variant="body1"
@@ -633,7 +631,7 @@ const About = () => {
                         color: theme.palette.text.secondary,
                       }}
                     >
-                      What began as an ambitious graduation project has evolved into a comprehensive logistics platform. By leveraging cutting-edge technology and our deep understanding of industry challenges, we've developed a solution that streamlines shipping processes, enhances efficiency, and delivers exceptional user experiences. Our commitment to innovation and excellence continues to drive us forward as we reshape the future of logistics technology.
+                      What started as a graduation project quickly evolved into a mission to simplify shipping for businesses and individuals alike. Today, Hatly stands as a testament to innovation, collaboration, and the power of technology to transform traditional industries.
                     </Typography>
                   </Box>
                 </motion.div>
