@@ -16,6 +16,7 @@
     "@mui/material": "^7.0.2",
     "@mui/styled-engine-sc": "^7.0.2",
     "framer-motion": "^12.9.2",
+    "icons-material": "^0.0.1-security",
     "react": "^19.0.0",
     "react-awesome-reveal": "^4.3.1",
     "react-countup": "^6.5.3",
