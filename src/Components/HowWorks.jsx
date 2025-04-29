@@ -38,7 +38,9 @@ export default function MediaCard() {
           <SectionTitle variant="h4" component="h2">
             How Hatly Works
           </SectionTitle>
-        
+          <Typography variant="subtitle1" sx={{ color: 'text.secondary', maxWidth: '700px', margin: '0 auto' }}>
+            Three simple steps to get your items delivered through  trusted travellers.
+          </Typography>
         </Box>
       </Fade>
       
@@ -80,10 +82,10 @@ export default function MediaCard() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div" sx={{ color: '#4141DA', fontWeight: 'bold' }}>
-                Create
+              Post Your Request
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                Create your account then create your shipment or trip. Hatly connects you to what you need, no matter where you are.
+              Simply describe what you need shipped, where it's going, and when you need it there. Our intuitive platform makes it easy to create your shipping request in minutes.
               </Typography>
             </CardContent>
           </Card>
@@ -117,10 +119,10 @@ export default function MediaCard() {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" sx={{ color: '#4141DA', fontWeight: 'bold' }}>
-              Connect
+            Match With Travelers
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-              Your request is matched with trusted travelers heading your way. Chat, confirm the details, and track the journey — all within the app.
+            Our smart matching system connects you with verified travelers heading to your destination. You'll see profiles, ratings, and estimated delivery times.
             </Typography>
           </CardContent>
         </Card>
