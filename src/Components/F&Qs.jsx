@@ -309,28 +309,29 @@ export default function FrequentlyAsked() {
         </Box>
 
         {/* Right Column - Logo */}
-        <Box sx={{ 
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: { xs: '100%', md: '400px' },
-          height: 'fit-content',
-          alignSelf: { xs: 'center', md: 'flex-start' },
-          mt: { xs: 4, md: 0 },
-          animation: 'float 3s ease-in-out infinite'
-        }}>
-          <img 
-            src={logo} 
-            alt="Logo" 
-            style={{ 
-              height: 'auto',
-              maxHeight: '300px',
-              width: 'auto',
-              marginTop: '20px',
-              transform: 'rotate(-10deg)'
-            }} 
-          />
-        </Box>
+       <Box sx={{ 
+  display: { xs: 'none', md: 'flex' }, // Hidden on xs, visible on md+
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: { xs: '100%', md: '400px' },
+  height: 'fit-content',
+  alignSelf: { xs: 'center', md: 'flex-start' },
+  mt: { xs: 4, md: 0 },
+  animation: 'float 3s ease-in-out infinite'
+}}>
+  <img 
+    src={logo} 
+    alt="Logo" 
+    style={{ 
+      height: 'auto',
+      maxHeight: '300px',
+      width: 'auto',
+      marginTop: '20px',
+      transform: 'rotate(-10deg)'
+    }} 
+  />
+</Box>
+
       </Box>
 
       <style>

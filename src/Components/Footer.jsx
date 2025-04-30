@@ -134,6 +134,10 @@ function Footer() {
               flex: { xs: "1 1 100%", md: "1" },
               minWidth: { xs: "100%", md: "300px" },
               mb: { xs: 2, md: 0 },
+              display: "flex",
+              flexDirection: "column",
+              alignItems: { xs: "center", md: "flex-start" },
+              textAlign: { xs: "center", md: "left" },
             }}
           >
             <Typography
@@ -175,7 +179,14 @@ function Footer() {
             </Typography>
             
             {/* Social Icons */}
-            <Stack direction="row" spacing={1} sx={{ mb: 3 }}>
+            <Stack 
+              direction="row" 
+              spacing={1} 
+              sx={{ 
+                mb: 3,
+                justifyContent: { xs: "center", md: "flex-start" }
+              }}
+            >
               <IconButton
                 href="https://web.facebook.com/profile.php?id=61561175183049"
                 target="_blank"
@@ -251,7 +262,13 @@ function Footer() {
             </Stack>
 
             {/* Contact Info */}
-            <Stack spacing={1.5} sx={{ opacity: 0.9 }}>
+            <Stack 
+              spacing={1.5} 
+              sx={{ 
+                opacity: 0.9,
+                alignItems: { xs: "center", md: "flex-start" }
+              }}
+            >
               <Stack direction="row" alignItems="center" spacing={1.5}>
                 <EmailIcon fontSize="small" sx={{ color: "#E0E0FF" }} />
                 <Link
@@ -311,8 +328,8 @@ function Footer() {
             sx={{
               flex: { xs: "1 1 100%", md: "2" },
               justifyContent: "space-around",
-              
-            
+              alignItems: { xs: "center", md: "flex-start" },
+              width: "100%",
             }}
           >
             {footerLinks.map((section, index) => (
@@ -424,6 +441,7 @@ function Footer() {
             }
             sx={{
               textAlign: { xs: "center", sm: "left" },
+              justifyContent: { xs: "center", sm: "flex-start" },
               "& a": {
                 color: "rgba(255,255,255,0.9)",
                 textDecoration: "none",

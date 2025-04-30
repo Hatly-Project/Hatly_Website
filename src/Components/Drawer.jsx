@@ -30,7 +30,28 @@ export default function TemporaryDrawer() {
    const isSpecialPage =  path ===  "/frequently-asked" ;
 
     const [open, setOpen] = React.useState(false);
+    const [isWhiteBackground, setIsWhiteBackground] = React.useState(false);
     const navigate = useNavigate(); // Declare the useNavigate hook
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            // Get the element at the current scroll position
+            const element = document.elementFromPoint(window.innerWidth / 2, 50);
+            if (element) {
+                const computedStyle = window.getComputedStyle(element);
+                const backgroundColor = computedStyle.backgroundColor;
+                // Check if the background is white or light colored
+                const isLightBackground = backgroundColor.includes('255, 255, 255') || 
+                                        backgroundColor.includes('rgba(255, 255, 255') ||
+                                        backgroundColor.includes('rgb(255, 255, 255');
+                setIsWhiteBackground(isLightBackground);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const toggleDrawer = (newOpen) => () => {
       setOpen(newOpen);
@@ -110,15 +131,22 @@ export default function TemporaryDrawer() {
         <IconButton
           onClick={toggleDrawer(true)}
           sx={{
-            position: 'absolute', 
+            position: 'fixed', 
             top: 20,  
             left: 20, 
             padding: '10px',
-            zIndex: 1000, 
-            
+            zIndex: 1000,
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+            borderRadius: '50%',
+            '&:hover': {
+              backgroundColor: 'rgba(0, 0, 0, 0.5)'
+            }
           }}
         >
-          <MenuIcon sx={{ color: isSpecialPage?  "#4141DA":'white', fontSize: "35px" }} />
+          <MenuIcon sx={{ 
+            color: isSpecialPage?'#4141DA':'white',
+            fontSize: "35px"
+          }} />
         </IconButton>
 
         {/* Drawer component */}
