@@ -253,25 +253,16 @@ function Footer() {
             {/* Contact Info */}
             <Stack spacing={1.5} sx={{ opacity: 0.9 }}>
               <Stack direction="row" alignItems="center" spacing={1.5}>
-                <EmailIcon fontSize="small" sx={{ 
-                  color: "#E0E0FF",
-                  transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "scale(1.2)",
-                    color: "white"
-                  }
-                }} />
+                <EmailIcon fontSize="small" sx={{ color: "#E0E0FF" }} />
                 <Link
                   href="mailto:contact@hatly.com"
-                  underline="none"
+                  underline="hover"
                   color="inherit"
                   sx={{ 
                     cursor: 'pointer',
                     "&:hover": {
                       color: "white",
-                      transform: "translateX(5px)",
-                    },
-                    transition: "all 0.3s ease",
+                    }
                   }}
                 >
                   <Typography variant="body2">contact@hatly.com</Typography>
@@ -279,25 +270,16 @@ function Footer() {
               </Stack>
 
               <Stack direction="row" alignItems="center" spacing={1.5}>
-                <PhoneIcon fontSize="small" sx={{ 
-                  color: "#E0E0FF",
-                  transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "scale(1.2)",
-                    color: "white"
-                  }
-                }} />
+                <PhoneIcon fontSize="small" sx={{ color: "#E0E0FF" }} />
                 <Link
                   href="tel:+15551234567"
-                  underline="none"
+                  underline="hover"
                   color="inherit"
                   sx={{ 
                     cursor: 'pointer',
                     "&:hover": {
                       color: "white",
-                      transform: "translateX(5px)",
-                    },
-                    transition: "all 0.3s ease",
+                    }
                   }}
                 >
                   <Typography variant="body2">+1 (555) 123-4567</Typography>
@@ -305,15 +287,7 @@ function Footer() {
               </Stack>
 
               <Stack direction="row" alignItems="flex-start" spacing={1.5}>
-                <LocationOnIcon fontSize="small" sx={{ 
-                  color: "#E0E0FF", 
-                  mt: 0.5,
-                  transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "scale(1.2)",
-                    color: "white"
-                  }
-                }} />
+                <LocationOnIcon fontSize="small" sx={{ color: "#E0E0FF", mt: 0.5 }} />
                 <Typography 
                   variant="body2" 
                   color="inherit"
@@ -321,9 +295,7 @@ function Footer() {
                     cursor: 'pointer',
                     "&:hover": {
                       color: "white",
-                      transform: "translateX(5px)",
-                    },
-                    transition: "all 0.3s ease",
+                    }
                   }}
                 >
                   Cairo, Egypt
@@ -335,10 +307,12 @@ function Footer() {
           {/* Links Columns */}
           <Stack
             direction={{ xs: "column", sm: "row" }}
-            spacing={{ xs: 4, sm: 6, md: 4 }}
+            spacing={{ xs: 4, sm: 6, md: 8 }}
             sx={{
               flex: { xs: "1 1 100%", md: "2" },
               justifyContent: "space-around",
+              
+            
             }}
           >
             {footerLinks.map((section, index) => (
@@ -370,7 +344,7 @@ function Footer() {
                 >
                   {section.title}
                 </Typography>
-                <Stack spacing={0.5}>
+                <Stack spacing={1.5}>
                   {section.links.map((link, idx) => (
                     <Link
                       key={idx}

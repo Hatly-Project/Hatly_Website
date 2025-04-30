@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
 import Loader from './Components/Loader/Loader'
 import TemporaryDrawer from './Components/Drawer'
 import FrequentlyAsked from './Components/F&Qs'
+import TermsOfService from './Components/TearmsService'
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
         <Route path="/about-us" element={<About />} />
          <Route path="/" element={<Home />} />
           <Route path="/frequently-asked" element={<FrequentlyAsked />} />
+          <Route path="/terms-service" element={<TermsOfService />} />
       </Routes>
       
 

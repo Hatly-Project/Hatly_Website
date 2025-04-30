@@ -208,27 +208,31 @@ const OurServices = () => (
       </Box>
 
       {/* Middle Image */}
-      <Fade triggerOnce>
-        <Box sx={{
-          width: { xs: '100%', md: '400px' },
-          flexShrink: 0,
-          px: { xs: 0, md: 2 }
-        }}>
-          <Box
-            component="img"
-            src={middltImg}
-            alt="Platform overview"
-            sx={{
-              width: '100%',
-              height: '100%',
-              position: 'relative',
-              top: '20px',
-              minHeight: '700px',
-              objectFit: 'cover'
-            }}
-          />
-        </Box>
-      </Fade>
+     <Fade triggerOnce>
+  <Box
+    sx={{
+      display: { xs: 'none', md: 'block' }, // hide on xs and show on md+
+      width: { xs: '100%', md: '400px' },
+      flexShrink: 0,
+      px: { xs: 0, md: 2 },
+    }}
+  >
+    <Box
+      component="img"
+      src={middltImg}
+      alt="Platform overview"
+      sx={{
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+        top: '20px',
+        minHeight: '700px',
+        objectFit: 'cover',
+      }}
+    />
+  </Box>
+</Fade>
+
 
       {/* Right Cards Column */}
       <Box sx={{ 

@@ -429,7 +429,7 @@ const About = () => {
                 mb: 3,
                 fontSize: { xs: "2.5rem", md: "4.5rem" },
                 lineHeight: 1.2,
-                background: `linear-gradient(to right, white, ${colors.teal})`,
+                background: 'white',
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 textShadow: "0 2px 10px rgba(0,0,0,0.1)",
@@ -452,6 +452,10 @@ const About = () => {
                 fontWeight: 300,
                 mb: 4,
                 textAlign: "center",
+                lineHeight:'40px',
+             
+               
+                
               }}
             >
               At Hatly, we're transforming the shipping industry through innovation
