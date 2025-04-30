@@ -23,7 +23,7 @@ const SectionTitle = styled(Typography)(({ theme }) => ({
     transform: 'translateX(-50%)',
     width: '80px',
     height: '3px',
-    background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+    background: 'linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})',
     borderRadius: '3px'
   }
 }));
@@ -33,35 +33,14 @@ const GradientPaper = styled(Paper)(({ theme }) => ({
   borderRadius: '20px',
   overflow: 'hidden',
   width: '300px',
-  '&:before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: '5px',
-    background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
-    animation: 'gradientMove 3s linear infinite',
-  },
-  '&:after': {
-    content: '""',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: '5px',
-    background: 'linear-gradient(90deg, #FF8E53, #4141DA)',
-    animation: 'gradientMove 3s linear infinite',
-  },
-  '@keyframes gradientMove': {
+  boxShadow: 'none',
+  backgroundColor: 'transparent',
+  '@keyframes rotate': {
     '0%': {
-      background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
-    },
-    '50%': {
-      background: 'linear-gradient(90deg, #FF8E53, #4141DA)',
+      transform: 'rotate(0deg)',
     },
     '100%': {
-      background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+      transform: 'rotate(360deg)',
     }
   }
 }));
@@ -103,16 +82,16 @@ const OurServices = () => (
     <Box sx={{ 
       display: 'flex',
       flexDirection: { xs: 'column', md: 'row' },
-      alignItems: 'center',
+      alignItems: { xs: 'center', md: 'flex-end' },
       justifyContent: 'center',
-      gap: 4,
+      gap: 6,
       px: 2
     }}>
       {/* Left Cards Column */}
       <Box sx={{ 
         display: 'flex',
         flexDirection: 'column',
-        gap: 4,
+        gap: 6,
         width: { md: '300px' }
       }}>
         <Slide direction="left" triggerOnce>
@@ -123,18 +102,42 @@ const OurServices = () => (
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              backgroundColor: "#fff",
+              backgroundColor: "transparent",
               transition: "all 0.5s ease",
               "&:hover": {
-                backgroundColor: "#4141DA",
-                color: "#fff",
                 "& .icon": {
-                  color: "#fff",
+                  color: "#4141DA",
                   transform: "scale(1.5)",
                 }
               }
             }}>
-              <Box mb={2} className="icon" sx={{ transition: "all 0.3s ease", color: "#4141DA" }}>
+              <Box mb={2} className="icon" sx={{ 
+                transition: "all 0.3s ease", 
+                color: "#4141DA",
+                padding: '14px',
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  borderRadius: '50%',
+                  padding: '3px',
+                  background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  animation: 'rotate 1s linear infinite',
+                }
+              }}>
                 {services[0].icon}
               </Box>
               <Typography variant="h6" fontWeight={700} mb={1}>
@@ -155,18 +158,42 @@ const OurServices = () => (
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              backgroundColor: "#fff",
+              backgroundColor: "transparent",
               transition: "all 0.5s ease",
               "&:hover": {
-                backgroundColor: "#4141DA",
-                color: "#fff",
                 "& .icon": {
-                  color: "#fff",
+                  color: "#4141DA",
                   transform: "scale(1.5)",
                 }
               }
             }}>
-              <Box mb={2} className="icon" sx={{ transition: "all 0.3s ease", color: "#4141DA" }}>
+              <Box mb={2} className="icon" sx={{ 
+                transition: "all 0.3s ease", 
+                color: "#4141DA",
+                padding: '14px',
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  borderRadius: '50%',
+                  padding: '3px',
+                  background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  animation: 'rotate 1s linear infinite',
+                }
+              }}>
                 {services[1].icon}
               </Box>
               <Typography variant="h6" fontWeight={700} mb={1}>
@@ -194,8 +221,8 @@ const OurServices = () => (
             sx={{
               width: '100%',
               height: '100%',
-              // borderRadius: '20px',
-              // boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+              position: 'relative',
+              top: '20px',
               minHeight: '700px',
               objectFit: 'cover'
             }}
@@ -207,7 +234,7 @@ const OurServices = () => (
       <Box sx={{ 
         display: 'flex',
         flexDirection: 'column',
-        gap: 4,
+        gap: 6,
         width: { md: '300px' }
       }}>
         <Slide direction="right" triggerOnce>
@@ -218,18 +245,42 @@ const OurServices = () => (
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              backgroundColor: "#fff",
+              backgroundColor: "transparent",
               transition: "all 0.5s ease",
               "&:hover": {
-                backgroundColor: "#4141DA",
-                color: "#fff",
                 "& .icon": {
-                  color: "#fff",
+                  color: "#4141DA",
                   transform: "scale(1.5)",
                 }
               }
             }}>
-              <Box mb={2} className="icon" sx={{ transition: "all 0.3s ease", color: "#4141DA" }}>
+              <Box mb={2} className="icon" sx={{ 
+                transition: "all 0.3s ease", 
+                color: "#4141DA",
+                padding: '14px',
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  borderRadius: '50%',
+                  padding: '3px',
+                  background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  animation: 'rotate 1s linear infinite',
+                }
+              }}>
                 {services[2].icon}
               </Box>
               <Typography variant="h6" fontWeight={700} mb={1}>
@@ -250,18 +301,42 @@ const OurServices = () => (
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              backgroundColor: "#fff",
+              backgroundColor: "transparent",
               transition: "all 0.5s ease",
               "&:hover": {
-                backgroundColor: "#4141DA",
-                color: "#fff",
                 "& .icon": {
-                  color: "#fff",
+                  color: "#4141DA",
                   transform: "scale(1.5)",
                 }
               }
             }}>
-              <Box mb={2} className="icon" sx={{ transition: "all 0.3s ease", color: "#4141DA" }}>
+              <Box mb={2} className="icon" sx={{ 
+                transition: "all 0.3s ease", 
+                color: "#4141DA",
+                padding: '14px',
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  borderRadius: '50%',
+                  padding: '3px',
+                  background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  animation: 'rotate 1s linear infinite',
+                }
+              }}>
                 {services[3].icon}
               </Box>
               <Typography variant="h6" fontWeight={700} mb={1}>
@@ -278,4 +353,4 @@ const OurServices = () => (
   </Box>
 );
 
-export default OurServices;
+export default OurServices;

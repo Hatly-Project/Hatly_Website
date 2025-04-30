@@ -1,7 +1,7 @@
-// SecondScreen.jsx
+
 
 import React from "react";
-import { Box, Typography, Paper } from "@mui/material";
+import { Box, Typography, Paper, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Fade, Slide } from "react-awesome-reveal";
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
@@ -10,50 +10,41 @@ import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import middltImg from "../images/phone screen1-Photoroom.png";
 
-// Styled components
 const SectionTitle = styled(Typography)(({ theme }) => ({
-  color: theme.palette.primary.main,
+  color: "#4141DA",
   fontWeight: 600,
   marginBottom: theme.spacing(2),
-  position: "relative",
-  textAlign: "center",
-  "&:after": {
+  position: 'relative',
+  textAlign: 'center',
+  
+  '&:after': {
     content: '""',
-    position: "absolute",
-    bottom: "-12px",
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: "80px",
-    height: "3px",
-    background: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-    borderRadius: "3px",
-  },
+    position: 'absolute',
+    bottom: '-12px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: '80px',
+    height: '3px',
+    background: 'linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})',
+    borderRadius: '3px'
+  }
 }));
 
 const GradientPaper = styled(Paper)(({ theme }) => ({
-  position: "relative",
-  borderRadius: "20px",
-  overflow: "hidden",
-  width: "280px",
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    inset: 0,
-    padding: "2px",
-    borderRadius: "20px",
-    background: "linear-gradient(270deg, #4141DA, #FF8E53, #4141DA)",
-    backgroundSize: "400% 400%",
-    zIndex: 1,
-    pointerEvents: "none",
-    WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-    WebkitMaskComposite: "xor",
-    maskComposite: "exclude",
-    animation: "moveGradientBorder 4s linear infinite",
-  },
-  "@keyframes moveGradientBorder": {
-    "0%": { backgroundPosition: "0% 50%" },
-    "100%": { backgroundPosition: "100% 50%" },
-  },
+  position: 'relative',
+  borderRadius: '20px',
+  overflow: 'hidden',
+  width: '300px',
+  boxShadow: 'none',
+  backgroundColor: 'transparent',
+  '@keyframes rotate': {
+    '0%': {
+      transform: 'rotate(0deg)',
+    },
+    '100%': {
+      transform: 'rotate(360deg)',
+    }
+  }
 }));
 
 const services = [
@@ -79,84 +70,152 @@ const services = [
   },
 ];
 
-// Helper for rendering service cards
-const ServiceCard = ({ service, delay = 0, direction = "left" }) => (
-  <Slide direction={direction} triggerOnce delay={delay}>
-    <GradientPaper>
-      <Box
-        sx={{
-          p: 3,
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          backgroundColor: "#fff",
-          transition: "all 0.5s ease",
-          "&:hover": {
-            backgroundColor: "#4141DA",
-            color: "#fff",
-            "& .icon": {
-              color: "#fff",
-              transform: "scale(1.5)",
-            },
-          },
-        }}
-      >
-        <Box
-          mb={2}
-          className="icon"
-          sx={{ transition: "all 0.3s ease", color: "#4141DA" }}
-        >
-          {service.icon}
-        </Box>
-        <Typography variant="h6" fontWeight={700} mb={1}>
-          {service.title}
-        </Typography>
-        <Typography fontSize="0.9rem" textAlign="center">
-          {service.desc}
-        </Typography>
+const OurServices = () => (
+  <Box sx={{ background: "#f5f5f5", py: 8, textAlign: "center" }}>
+    <Fade>
+      <Box textAlign="center" mb={6}>
+        <SectionTitle variant="h4" component="h2">
+          Inside The Platform
+        </SectionTitle>
+       
       </Box>
-    </GradientPaper>
-  </Slide>
-);
+    </Fade>
 
-// Main Component
-const SecondScreen = () => (
-  <Box sx={{ background: "#f5f5f5", py: 4, textAlign: "center" }}>
-    
+    <Box sx={{ 
+      display: 'flex',
+      flexDirection: { xs: 'column', md: 'row' },
+      alignItems: { xs: 'center', md: 'flex-end' },
+      justifyContent: 'center',
+      gap: 6,
+      px: 2
+    }}>
+      {/* Left Cards Column */}
+      <Box sx={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 6,
+        width: { md: '300px' }
+      }}>
+        <Slide direction="left" triggerOnce>
+          <GradientPaper>
+            <Box sx={{
+              p: 3,
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: "transparent",
+              transition: "all 0.5s ease",
+              "&:hover": {
+                "& .icon": {
+                  color: "#4141DA",
+                  transform: "scale(1.5)",
+                }
+              }
+            }}>
+              <Box mb={2} className="icon" sx={{ 
+                transition: "all 0.3s ease", 
+                color: "#4141DA",
+                padding: '14px',
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  borderRadius: '50%',
+                  padding: '3px',
+                  background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  animation: 'rotate 1s linear infinite',
+                }
+              }}>
+                {services[0].icon}
+              </Box>
+              <Typography variant="h6" fontWeight={700} mb={1}>
+                {services[0].title}
+              </Typography>
+              <Typography fontSize="0.9rem" textAlign="center">
+                {services[0].desc}
+              </Typography>
+            </Box>
+          </GradientPaper>
+        </Slide>
 
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: { xs: "column", md: "row" },
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 4,
-        px: 2,
-      }}
-    >
-      {/* Left Column */}
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 4,
-          width: { md: "280px" },
-        }}
-      >
-        <ServiceCard service={services[0]} direction="left" />
-        <ServiceCard service={services[1]} direction="left" delay={200} />
+        <Slide direction="left" triggerOnce delay={200}>
+          <GradientPaper>
+            <Box sx={{
+              p: 3,
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: "transparent",
+              transition: "all 0.5s ease",
+              "&:hover": {
+                "& .icon": {
+                  color: "#4141DA",
+                  transform: "scale(1.5)",
+                }
+              }
+            }}>
+              <Box mb={2} className="icon" sx={{ 
+                transition: "all 0.3s ease", 
+                color: "#4141DA",
+                padding: '14px',
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  borderRadius: '50%',
+                  padding: '3px',
+                  background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  animation: 'rotate 1s linear infinite',
+                }
+              }}>
+                {services[1].icon}
+              </Box>
+              <Typography variant="h6" fontWeight={700} mb={1}>
+                {services[1].title}
+              </Typography>
+              <Typography fontSize="0.9rem" textAlign="center">
+                {services[1].desc}
+              </Typography>
+            </Box>
+          </GradientPaper>
+        </Slide>
       </Box>
 
       {/* Middle Image */}
       <Fade triggerOnce>
-        <Box
-          sx={{
-            width: { xs: "100%", md: "400px" },
-            flexShrink: 0,
-            px: { xs: 0, md: 2 },
-          }}
-        >
+        <Box sx={{
+          width: { xs: '100%', md: '400px' },
+          flexShrink: 0,
+          px: { xs: 0, md: 2 }
+        }}>
           <Box
             component="img"
             src={middltImg}
@@ -164,7 +223,8 @@ const SecondScreen = () => (
             sx={{
               width: '100%',
               height: '100%',
-             
+              position: 'relative',
+              top: '20px',
               minHeight: '700px',
               objectFit: 'cover'
             }}
@@ -172,20 +232,127 @@ const SecondScreen = () => (
         </Box>
       </Fade>
 
-      {/* Right Column */}
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 4,
-          width: { md: "280px" },
-        }}
-      >
-        <ServiceCard service={services[2]} direction="right" />
-        <ServiceCard service={services[3]} direction="right" delay={200} />
+      {/* Right Cards Column */}
+      <Box sx={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 6,
+        width: { md: '300px' }
+      }}>
+        <Slide direction="right" triggerOnce>
+          <GradientPaper>
+            <Box sx={{
+              p: 3,
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: "transparent",
+              transition: "all 0.5s ease",
+              "&:hover": {
+                "& .icon": {
+                  color: "#4141DA",
+                  transform: "scale(1.5)",
+                }
+              }
+            }}>
+              <Box mb={2} className="icon" sx={{ 
+                transition: "all 0.3s ease", 
+                color: "#4141DA",
+                padding: '14px',
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  borderRadius: '50%',
+                  padding: '3px',
+                  background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  animation: 'rotate 1s linear infinite',
+                }
+              }}>
+                {services[2].icon}
+              </Box>
+              <Typography variant="h6" fontWeight={700} mb={1}>
+                {services[2].title}
+              </Typography>
+              <Typography fontSize="0.9rem" textAlign="center">
+                {services[2].desc}
+              </Typography>
+            </Box>
+          </GradientPaper>
+        </Slide>
+
+        <Slide direction="right" triggerOnce delay={200}>
+          <GradientPaper>
+            <Box sx={{
+              p: 3,
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: "transparent",
+              transition: "all 0.5s ease",
+              "&:hover": {
+                "& .icon": {
+                  color: "#4141DA",
+                  transform: "scale(1.5)",
+                }
+              }
+            }}>
+              <Box mb={2} className="icon" sx={{ 
+                transition: "all 0.3s ease", 
+                color: "#4141DA",
+                padding: '14px',
+                width: '80px',
+                height: '80px',
+                borderRadius: '50%',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                '&:before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  borderRadius: '50%',
+                  padding: '3px',
+                  background: 'linear-gradient(90deg, #4141DA, #FF8E53)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor',
+                  maskComposite: 'exclude',
+                  animation: 'rotate 1s linear infinite',
+                }
+              }}>
+                {services[3].icon}
+              </Box>
+              <Typography variant="h6" fontWeight={700} mb={1}>
+                {services[3].title}
+              </Typography>
+              <Typography fontSize="0.9rem" textAlign="center">
+                {services[3].desc}
+              </Typography>
+            </Box>
+          </GradientPaper>
+        </Slide>
       </Box>
     </Box>
   </Box>
 );
 
-export default SecondScreen;
+export default OurServices;

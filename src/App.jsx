@@ -1,6 +1,6 @@
 
 import { Route, Routes } from 'react-router-dom'
-import './App.css'
+import './index.css'
 import About from './Components/About'
 import ResponsiveAppBar from './Components/AppBar'
 import Contact from './Components/Contact'
@@ -22,7 +22,7 @@ function App() {
     const fakeDataFetch = () => {
       setTimeout(() => {
         setIsLoading(false);
-      }, 5000);
+      }, 4000);
     };
 
     fakeDataFetch();
