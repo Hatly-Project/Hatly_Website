@@ -206,7 +206,7 @@ function Footer() {
                 <FacebookIcon />
               </IconButton>
               <IconButton
-                href="https://twitter.com/yourpage"
+                href="https://x.com/Hatly_1"
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
@@ -272,7 +272,7 @@ function Footer() {
               <Stack direction="row" alignItems="center" spacing={1.5}>
                 <EmailIcon fontSize="small" sx={{ color: "#E0E0FF" }} />
                 <Link
-                  href="mailto:contact@hatly.com"
+                  href="mailto:hatly160@gmail.com"
                   underline="hover"
                   color="inherit"
                   sx={{ 
@@ -282,7 +282,7 @@ function Footer() {
                     }
                   }}
                 >
-                  <Typography variant="body2">contact@hatly.com</Typography>
+                  <Typography variant="body2">Hatly160@gmail.com</Typography>
                 </Link>
               </Stack>
 
