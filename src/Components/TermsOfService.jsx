@@ -28,16 +28,7 @@ function TermsOfService() {
           Hatly Terms and Conditions
         </Typography>
 
-        <Typography
-          variant="subtitle1"
-          sx={{
-            color: '#64748b',
-            mb: 4,
-            fontStyle: 'italic',
-          }}
-        >
-          Last updated: 1/5/2025
-        </Typography>
+        
 
         <Divider sx={{ mb: 4, borderColor: '#e2e8f0' }} />
 
@@ -201,7 +192,8 @@ function TermsOfService() {
           <Typography variant="body1" sx={{ mb: 2, color: '#475569', lineHeight: 1.7 }}>
             To use Hatly, you must:
           </Typography>
-          <List dense sx={{ pl: 2, listStyleType: 'disc', listStylePosition: 'inside' }}>
+
+          <List dense sx={{ pl: 2, listStyleType: 'disc', }}>
             <ListItem sx={{ display: 'list-item', px: 0, py: 0.5, color: '#475569' }}>
               <ListItemText primary="Be at least 18 years old." sx={{ m: 0 }} />
             </ListItem>
@@ -238,7 +230,7 @@ function TermsOfService() {
             />
             3. Account Registration
           </Typography>
-          <List dense sx={{ pl: 2, listStyleType: 'disc', listStylePosition: 'inside' }}>
+          <List dense sx={{ pl: 2, listStyleType: 'disc', }}>
             <ListItem sx={{ display: 'list-item', px: 0, py: 0.5, color: '#475569' }}>
               <ListItemText primary="You must create an account to use Hatly." sx={{ m: 0 }} />
             </ListItem>
@@ -356,7 +348,7 @@ function TermsOfService() {
           <Typography variant="body1" sx={{ mb: 2, color: '#475569', lineHeight: 1.7 }}>
             Shoppers pay the total shipment cost upfront, including:
           </Typography>
-          <List dense sx={{ pl: 2, listStyleType: 'disc', listStylePosition: 'inside' }}>
+          <List dense sx={{ pl: 2, listStyleType: 'disc',  }}>
             <ListItem sx={{ display: 'list-item', px: 0, py: 0.5, color: '#475569' }}>
               <ListItemText primary="Product Price (if any)" sx={{ m: 0 }} />
             </ListItem>
@@ -402,7 +394,7 @@ function TermsOfService() {
             />
             6. Traveler Responsibilities
           </Typography>
-          <List dense sx={{ pl: 2, listStyleType: 'disc', listStylePosition: 'inside' }}>
+          <List dense sx={{ pl: 2, listStyleType: 'disc', }}>
             <ListItem sx={{ display: 'list-item', px: 0, py: 0.5, color: '#475569' }}>
               <ListItemText primary="Ensure timely and safe delivery of the shipment." sx={{ m: 0 }} />
             </ListItem>
@@ -442,7 +434,7 @@ function TermsOfService() {
             />
             7. Shopper Responsibilities
           </Typography>
-          <List dense sx={{ pl: 2, listStyleType: 'disc', listStylePosition: 'inside' }}>
+          <List dense sx={{ pl: 2, listStyleType: 'disc', }}>
             <ListItem sx={{ display: 'list-item', px: 0, py: 0.5, color: '#475569' }}>
               <ListItemText primary="Provide clear, legal, and accurate shipment details." sx={{ m: 0 }} />
             </ListItem>
@@ -482,7 +474,7 @@ function TermsOfService() {
           <Typography variant="body1" sx={{ mb: 2, color: '#475569', lineHeight: 1.7 }}>
             Users must not send or deliver:
           </Typography>
-          <List dense sx={{ pl: 2, listStyleType: 'disc', listStylePosition: 'inside' }}>
+          <List dense sx={{ pl: 2, listStyleType: 'disc',  }}>
             <ListItem sx={{ display: 'list-item', px: 0, py: 0.5, color: '#475569' }}>
               <ListItemText primary="Illegal drugs" sx={{ m: 0 }} />
             </ListItem>
@@ -629,7 +621,7 @@ function TermsOfService() {
           <Typography variant="body1" sx={{ mb: 2, color: '#475569', lineHeight: 1.7 }}>
             Hatly may suspend or terminate accounts that:
           </Typography>
-          <List dense sx={{ pl: 2, listStyleType: 'disc', listStylePosition: 'inside' }}>
+          <List dense sx={{ pl: 2, listStyleType: 'disc',  }}>
             <ListItem sx={{ display: 'list-item', px: 0, py: 0.5, color: '#475569' }}>
               <ListItemText primary="Violate these Terms" sx={{ m: 0 }} />
             </ListItem>
