@@ -1,4 +1,3 @@
-
 import { Route, Routes } from 'react-router-dom'
 import './index.css'
 import About from './Components/About'
@@ -11,7 +10,8 @@ import { useEffect, useState } from 'react'
 import Loader from './Components/Loader/Loader'
 import TemporaryDrawer from './Components/Drawer'
 import FrequentlyAsked from './Components/F&Qs'
-import TermsOfService from './Components/TearmsService'
+import TermsOfService from './Components/TermsOfService'
+import PrivacyPolicy from './Components/PrivacyPolicy'
 
 function App() {
 
@@ -43,7 +43,8 @@ function App() {
         <Route path="/about-us" element={<About />} />
          <Route path="/" element={<Home />} />
           <Route path="/frequently-asked" element={<FrequentlyAsked />} />
-          <Route path="/terms-service" element={<TermsOfService />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/contact-us" element={<Contact/>} />
       </Routes>
       
