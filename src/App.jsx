@@ -44,6 +44,7 @@ function App() {
          <Route path="/" element={<Home />} />
           <Route path="/frequently-asked" element={<FrequentlyAsked />} />
           <Route path="/terms-service" element={<TermsOfService />} />
+          <Route path="/contact-us" element={<Contact/>} />
       </Routes>
       
 

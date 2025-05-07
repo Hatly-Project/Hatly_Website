@@ -12,7 +12,7 @@
   flex-direction: column;
   opacity: 1;
   visibility: visible;
-  transition: opacity 2s ease, visibility 2s ease;
+  transition: opacity 3s ease, visibility 3s ease;
 }
 
 .loader.hide {
@@ -23,7 +23,7 @@
 .loader-img {
   width: 400px;
   height: 400px;
-  animation: fadeInOut 4s ease-in-out infinite, hueShift 5s linear infinite;
+  animation: fadeInOut 4s ease-in-out infinite, hueShift 3s linear infinite;
 }
 
 @keyframes fadeInOut {

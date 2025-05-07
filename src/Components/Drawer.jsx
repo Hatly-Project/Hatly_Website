@@ -20,8 +20,10 @@ import { useLocation, useNavigate } from 'react-router-dom'; // Import the useNa
 export default function TemporaryDrawer() {
     const pages = [
       { name: "Home", path: "/" },
-      { name: "F&Qs", path: "/frequently-asked" },
+      
       { name: "About Us", path: "/about-us" },
+      { name: "F&Qs", path: "/frequently-asked" },
+      { name: "Contact Us", path: "/contact-us" },
      
     ];
       const location = useLocation();
