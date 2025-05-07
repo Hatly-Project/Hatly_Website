@@ -28,17 +28,7 @@ function TermsOfService() {
           Hatly Terms and Conditions
         </Typography>
 
-        <Typography
-          variant="subtitle1"
-          sx={{
-            color: '#64748b',
-            mb: 4,
-            fontStyle: 'italic',
-          }}
-        >
-          Last updated: 1/5/2025
-        </Typography>
-
+        
         <Divider sx={{ mb: 4, borderColor: '#e2e8f0' }} />
 
         <Typography
@@ -62,6 +52,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -72,7 +63,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             1. Definitions
@@ -183,6 +174,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -193,7 +185,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             2. Eligibility
@@ -223,6 +215,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -233,7 +226,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             3. Account Registration
@@ -260,6 +253,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -270,7 +264,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             4. How Hatly Works
@@ -338,6 +332,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -348,7 +343,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             5. Payments and Fees
@@ -387,6 +382,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -397,7 +393,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             6. Traveler Responsibilities
@@ -427,6 +423,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -437,7 +434,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             7. Shopper Responsibilities
@@ -464,6 +461,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -474,7 +472,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             8. Prohibited Items
@@ -513,6 +511,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -523,7 +522,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             9. Support and Dispute Resolution
@@ -565,6 +564,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -575,7 +575,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             10. Liability and Disclaimer
@@ -611,6 +611,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -621,7 +622,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             11. Account Suspension and Termination
@@ -654,6 +655,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -664,7 +666,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             12. Privacy
@@ -683,6 +685,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -693,7 +696,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             13. Modifications
@@ -712,6 +715,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -722,7 +726,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             14. Governing Law
@@ -741,6 +745,7 @@ function TermsOfService() {
               fontWeight: '700',
               display: 'flex',
               alignItems: 'center',
+              gap: 1.5,
             }}
           >
             <Box
@@ -751,7 +756,7 @@ function TermsOfService() {
                 height: '8px',
                 borderRadius: '50%',
                 bgcolor: '#4f46e5',
-                mr: 1.5,
+                flexShrink: 0,
               }}
             />
             15. Contact
