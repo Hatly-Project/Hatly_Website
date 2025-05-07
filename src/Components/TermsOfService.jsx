@@ -192,7 +192,7 @@ function TermsOfService() {
           <Typography variant="body1" sx={{ mb: 2, color: '#475569', lineHeight: 1.7 }}>
             To use Hatly, you must:
           </Typography>
-          <List dense sx={{ pl: 2, listStyleType: 'disc', listStylePosition: 'inside' }}>
+          <List dense sx={{ pl: 2, listStyleType: 'disc', }}>
             <ListItem sx={{ display: 'list-item', px: 0, py: 0.5, color: '#475569' }}>
               <ListItemText primary="Be at least 18 years old." sx={{ m: 0 }} />
             </ListItem>
