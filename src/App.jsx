@@ -23,7 +23,7 @@ function App() {
     const fakeDataFetch = () => {
       setTimeout(() => {
         setIsLoading(false);
-      }, 4000);
+      }, 2500);
     };
 
     fakeDataFetch();
@@ -37,8 +37,6 @@ function App() {
       <TemporaryDrawer/>
 
       <Routes>
-       
-        
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/about-us" element={<About />} />
          <Route path="/" element={<Home />} />
