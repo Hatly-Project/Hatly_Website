@@ -470,8 +470,8 @@ function Footer() {
             }}
           >
             <Link href="#">Cookie policy</Link>
-            <Link href="/privacy-policy">Privacy policy</Link>
-            <Link href="/terms-of-service">Terms of service</Link>
+            <Link href="/privacy-policy" target="_blank">Privacy policy</Link>
+            <Link href="/terms-of-service" target="_blank">Terms of service</Link>
             <Link href="#">Help center</Link>
           </Stack>
         </Stack>
